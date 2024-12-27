@@ -7,11 +7,11 @@
         style = "glpyh";
       };
       animate = {
-        cursor.enable = true;
-        scroll.enable = true;
-        resize.enable = true;
-        open.enable = true;
-        close.enable = true;
+        cursor.enable = false;
+        scroll.enable = false;
+        resize.enable = false;
+        open.enable = false;
+        close.enable = false;
       };
       indentscope = {
         options = {
