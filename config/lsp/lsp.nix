@@ -23,4 +23,7 @@
   };
 
   plugins.lsp-format.enable = pkgs.lib.mkDefault true;
+
+  # Custom diagnostic signs for LSP
+  extraConfigLua = builtins.readFile ./diagnostic_signs.lua;
 }

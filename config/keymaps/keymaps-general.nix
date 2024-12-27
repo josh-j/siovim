@@ -31,18 +31,18 @@
       key = "O";
       mode = "n";
     }
-
-    {
-      action = ":vsplit<CR>";
-      key = "|";
-      mode = "n";
-    }
-
-    {
-      action = ":split<CR>";
-      key = "-";
-      mode = "n";
-    }
+    #
+    # {
+    #   action = ":vsplit<CR>";
+    #   key = "|";
+    #   mode = "n";
+    # }
+    #
+    # {
+    #   action = ":split<CR>";
+    #   key = "-";
+    #   mode = "n";
+    # }
 
     # Terminal escape back to nvim
     {

@@ -162,6 +162,29 @@
       };
     }
 
+    # Oil
+    {
+      action = "<cmd>Oil --float<CR>";
+      key = "-";
+      mode = "n";
+      options = {
+        noremap = true;
+        silent = true;
+        desc = "Oil";
+      };
+    }
+
+  # mini.files
+    {
+      action = "<cmd>lua require('mini.files').open(vim.api.nvim_buf_get_name(0))<CR>";
+      key = "<leader>/";
+      mode = "n";
+      options = {
+        noremap = true;
+        silent = true;
+        desc = "Open mini.files";
+      };
+    }
     # Zen mode and twilight
     {
       action = "<cmd>ZenMode<CR>";
