@@ -1,6 +1,7 @@
 {
   # Import all your configuration modules here
   imports = [
+    ./ai
     ./keymaps
     ./lsp
     ./plugins

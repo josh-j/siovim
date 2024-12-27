@@ -1,5 +1,5 @@
 {pkgs, ...}: {
-  colorschemes.kanagawa = {
+  colorschemes.obscure = {
     enable = pkgs.lib.mkDefault true;
   };
 }

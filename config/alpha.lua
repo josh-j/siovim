@@ -12,12 +12,14 @@ dashboard.section.header.val = {
 	"                                                                       ",
 	"                                                                       ",
 	"                                                                       ",
-	"      ███████╗██╗ ██████╗ ██╗   ██╗██╗███╗   ███╗                      ",
-	"      ██╔════╝██║██╔═══██╗██║   ██║██║████╗ ████║                      ",
-	"      ███████╗██║██║   ██║██║   ██║██║██╔████╔██║                      ",
-	"      ╚════██║██║██║   ██║╚██╗ ██╔╝██║██║╚██╔╝██║                      ",
-	"      ███████║██║╚██████╔╝ ╚████╔╝ ██║██║ ╚═╝ ██║                      ",
-	"      ╚══════╝╚═╝ ╚═════╝   ╚═══╝  ╚═╝╚═╝     ╚═╝                      ",
+	"                                                                     ",
+	"       ████ ██████           █████      ██                     ",
+	"      ███████████             █████                             ",
+	"      █████████ ███████████████████ ███   ███████████   ",
+	"     █████████  ███    █████████████ █████ ██████████████   ",
+	"    █████████ ██████████ █████████ █████ █████ ████ █████   ",
+	"  ███████████ ███    ███ █████████ █████ █████ ████ █████  ",
+	" ██████  █████████████████████ ████ █████ █████ ████ ██████ ",
 	"                                                                       ",
 	"                                                                       ",
 	"                                                                       ",
@@ -26,16 +28,20 @@ dashboard.section.header.val = {
 	"                                                                       ",
 }
 dashboard.section.buttons.val = {
-	dashboard.button("e", "󱝩  Explorer", ":NvimTreeToggle<CR>"),
 	dashboard.button("f", "  Find file", ":Telescope frecency workspace=CWD theme=dropdown<CR>"),
-	dashboard.button("n", "  New file", ":ene <BAR> startinsert<CR>"),
+	dashboard.button("e", "  New file", ":ene <BAR> startinsert<CR>"),
+	dashboard.button("p", "  Find project", ":Telescope projects theme=dropdown<CR>"),
 	dashboard.button("r", "󱝩  Recently used files", ":Telescope oldfiles theme=dropdown<CR>"),
-	dashboard.button("q", "  Quit siovim", ":qa<CR>"),
+	dashboard.button("t", "󱁴  Find text", ":Telescope live_grep theme=dropdown<CR>"),
+	dashboard.button("x", "  Quit Neovim", ":qa<CR>"),
 }
+
+dashboard.section.footer.val = "Amor Fati"
 
 dashboard.section.footer.opts.hl = "Type"
 dashboard.section.header.opts.hl = "Include"
 dashboard.section.buttons.opts.hl = "Keyword"
 
 dashboard.opts.opts.noautocmd = false
+vim.cmd([[autocmd User AlphaReady lua vim.b.miniindentscope_disable = true]])
 alpha.setup(dashboard.opts)
