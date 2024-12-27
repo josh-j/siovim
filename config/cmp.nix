@@ -10,6 +10,7 @@
     cmp = {
       enable = pkgs.lib.mkDefault true;
       autoEnableSources = pkgs.lib.mkDefault true;
+
       settings = {
         snippet.expand = "function(args) require('luasnip').lsp_expand(args.body) end";
 

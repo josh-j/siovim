@@ -33,7 +33,9 @@
         "help"
         "man"
         "lspinfo"
+        "oil"
         "alpha"
+        "spectre_panel"
         "lir"
         "DressingSelect"
         ""
@@ -65,6 +67,36 @@
         __raw = ''
           function()
               vim.cmd "tabdo wincmd ="
+          end
+        '';
+      };
+    }
+    {
+      event = ["FileType"];
+      pattern = [
+        "netrw"
+        "Jaq"
+        "qf"
+        "git"
+        "help"
+        "man"
+        "lspinfo"
+        "oil"
+        "spectre_panel"
+        "lir"
+        "DressingSelect"
+        "neogitstatus"
+        "alpha"
+        "notify"
+        "dashboard"
+        "Trouble"
+        "toggleterm"
+        ""
+      ];
+      callback = {
+        __raw = ''
+          function()
+            vim.b.miniindentscope_disable = true
           end
         '';
       };
