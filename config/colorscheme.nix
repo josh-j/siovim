@@ -4,7 +4,7 @@
 #   };
 # }
 {config, ...}: let
-  colors = import ./colors/jellybeans.nix;
+  colors = import ../colors/${config.theme}.nix;
 in {
   colorschemes = {
     base16 = {
