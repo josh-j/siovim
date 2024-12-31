@@ -1,12 +1,46 @@
 {pkgs, ...}: {
+  extraPackages = with pkgs; [ ripgrep ];
   plugins.telescope = {
     enable = pkgs.lib.mkDefault true;
     settings = {
+      # defaults = {
+      #   path_display = ["truncate"];
+      #   sorting_strategy = "ascending";
+      #   layout_config = {horizontal = {prompt_position = "top";};};
+      # };
+
       defaults = {
-        path_display = ["truncate"];
+        vimgrep_arguments = [
+          "${pkgs.ripgrep}/bin/rg"
+          "-L"
+          "--color=never"
+          "--no-heading"
+          "--with-filename"
+          "--line-number"
+          "--column"
+          "--smart-case"
+          "--fixed-strings"
+        ];
+        selection_caret = "  ";
+        entry_prefix = "  ";
+        layout_strategy = "flex";
+        layout_config = {
+          horizontal = {
+            prompt_position = "top";
+          };
+        };
         sorting_strategy = "ascending";
-        layout_config = {horizontal = {prompt_position = "top";};};
+        file_ignore_patterns = [
+          "^.git/"
+          "^.mypy_cache/"
+          "^__pycache__/"
+          "^output/"
+          "^data/"
+          "%.ipynb"
+        ];
+        set_env.COLORTERM = "truecolor";
       };
+
       pickers = {
         colorscheme = {
           enable_preview = true;
