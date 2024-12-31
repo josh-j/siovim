@@ -1,6 +1,6 @@
 {
   plugins.dressing = {
-    enable = true;
+    enable = false;
     settings = {
       input = {
         enabled = true;

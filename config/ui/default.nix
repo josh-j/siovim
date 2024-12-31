@@ -1,7 +1,7 @@
 {
   imports = [
     ./bufferline.nix
-    ./dressing.nix
+    # ./dressing.nix
     ./telescope.nix
     ./indent-blankline.nix
     ./lualine.nix

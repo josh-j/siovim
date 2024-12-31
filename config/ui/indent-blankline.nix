@@ -7,7 +7,7 @@
       exclude.filetypes = [
         "help"
         "alpha"
-        "snacks"
+        "snacks_dashboard"
         "dashboard"
         "neo-tree"
         "lazy"
