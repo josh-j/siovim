@@ -2,6 +2,7 @@
   # Import all your configuration modules here
   imports = [
     ./ai
+    ./completion
     ./keymaps
     ./lsp
     ./plugins
@@ -10,7 +11,6 @@
     ./alpha.nix
     ./autocmds.nix
     ./bufferline.nix
-    ./cmp.nix
     ./colorscheme.nix
     ./extra.nix
     ./lualine.nix

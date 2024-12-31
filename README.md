@@ -1,57 +1,38 @@
-# JeezyVim
-
-JeezyVim is a declarative NeoVim configuration built with
-[NixVim](https://github.com/nix-community/nixvim).
-
-This configuration aims to keep the familiarity of
-[LunarVim](https://lunarvim.org) while aggressively stripping away excessive
-IDE-like features to focus on delivering a fast, stable and reliable _editor_
-experience.
-
-JeezyVim aims to keep any manually written Lua code to an absolute minimum, and
-for the purposes of this project any committed Lua files are considered to be
-technical debt.
+# siovim
 
 This configuration gradually came to be out of the aggressive pruning of
 plugins that were unncessary for me in [dileep-kishore's neovim
 configuration](https://github.com/dileep-kishore/neovim), which is also an
 excellent configuration for people looking for a "maximalist" configuration.
 
-![image](https://github.com/LGUG2Z/JeezyVim/assets/13164844/df05aac6-f436-460e-a851-1796e8ae9456)
-
 ## Usage and Installation
 
 You can run this flake directly to try it out:
 
 ```bash
-nix run github:LGUG2Z/JeezyVim
+nix run github:josh-j/siovim
 ```
 
-You can add JeezyVim as an input to your flake configuration like this:
+You can add siovim as an input to your flake configuration like this:
 
 ```nix
 {
-    inputs.jeezyvim.url = "github:LGUG2Z/JeezyVim";
+    inputs.siovim.url = "github:josh-j/siovim";
 }
 ```
 
-You can add the `inputs.jeezyvim.overlays.default` overlay to your `nixpkgs` to
-make `pkgs.jeezyvim` available.
-
-If you are using any of my [NixOS starter
-templates](https://github.com/search?q=owner%3ALGUG2Z+nixos&type=repositories),
-you would add this to the `overlays` list in the `nixpkgsWithOverlays` function
-in `flake.nix`.
+You can add the `inputs.siovim.overlays.default` overlay to your `nixpkgs` to
+make `pkgs.siovim` available.
 
 ## Extending
 
 Is there a plugin or an LSP that you don't see enabled here, but you would like
-to enable when you install `pkgs.jeezyvim`? No problem!
+to enable when you install `pkgs.siovim`? No problem!
 
 ```nix
 {pkgs, ...}: {
   home.packages = [
-    (pkgs.jeezyvim.nixvimExtend {
+    (pkgs.siovim.nixvimExtend {
       # you can put anything under the "Options" section of the NixVim docs here
       # https://nix-community.github.io/nixvim/
 
@@ -136,3 +117,11 @@ IDEs which I have made LSP-equivalents for in this configuration.
   the current buffer
 - `<Space>s` to live grep
 - `<Space>f` to search through git-tracked files
+
+# References
+
+https://github.com/LGUG2Z/JeezyVim
+
+[dileep-kishore's neovim
+configuration](https://github.com/dileep-kishore/neovim),
+https://github.com/elythh/nixvim/tree/82a4a473b1a8edbf1e3213e3d09c05e289f4696d/config/colors
