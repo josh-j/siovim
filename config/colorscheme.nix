@@ -1,9 +1,10 @@
-# {pkgs, ...}: {
-#   colorschemes.oxocarbon = {
-#     enable = pkgs.lib.mkDefault true;
-#   };
-# }
-{config, ...}: let
+{pkgs, ...}: {
+  colorschemes.oxocarbon = {
+    enable = pkgs.lib.mkDefault true;
+  };
+}
+/*
+   {config, ...}: let
   colors = import ../colors/${config.theme}.nix;
 in {
   colorschemes = {
@@ -23,3 +24,4 @@ in {
     };
   };
 }
+*/
