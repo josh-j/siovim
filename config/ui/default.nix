@@ -6,7 +6,7 @@
     ./mini.nix
     # ./oil.nix
     # ./specs.nix
-    ./snack.nix
+    ./snacks.nix
     ./noice.nix
   ];
 }
