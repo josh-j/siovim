@@ -4,30 +4,26 @@
   system,
   ...
 }: {
-  extraPlugins = with pkgs.vimPlugins; [
-    # blink-cmp-copilot
-  ];
-
   plugins = {
     cmp-emoji.enable = true;
     cmp-git.enable = true;
     cmp-spell.enable = true;
     cmp-calc.enable = true;
     cmp-treesitter.enable = true;
-    lsp.capabilities =
-      # Lua
-      ''
-        capabilities = vim.tbl_deep_extend('force', capabilities, require('blink.cmp').get_lsp_capabilities())
-      '';
+    # lsp.capabilities =
+    #   # Lua
+    #   ''
+    #     capabilities = vim.tbl_deep_extend('force', capabilities, require('blink.cmp').get_lsp_capabilities())
+    #   '';
     blink-cmp = {
       enable = true;
-      package = inputs.blink-cmp.packages.${system}.default;
-      luaConfig.pre =
-        # lua
-        ''
-          require('blink.compat').setup({debug = true, impersonate_nvim_cmp = true})
-        '';
-
+      # package = inputs.blink-cmp.packages.${system}.default;
+      # luaConfig.pre =
+      #   # lua
+      #   ''
+      #     require('blink.compat').setup({debug = true, impersonate_nvim_cmp = true})
+      #   '';
+      #
       settings = {
         keymap = {
           preset = "super-tab";
@@ -36,15 +32,15 @@
           enabled = true;
         };
 
-        menu = {
-          draw.treesitter = ["lsp"];
-          # Do not auto show menu on cmdline or search
-          auto_show.__raw = ''
-            function(ctx)
-              return ctx.mode ~= "cmdline"
-            end
-          '';
-        };
+        # menu = {
+        #   draw.treesitter = ["lsp"];
+        #   # Do not auto show menu on cmdline or search
+        #   auto_show.__raw = ''
+        #     function(ctx)
+        #       return ctx.mode ~= "cmdline"
+        #     end
+        #   '';
+        # };
 
         sources = {
           default = [
@@ -83,49 +79,6 @@
             };
           };
         };
-
-        appearance = {
-          use_nvim_cmp_as_default = true;
-          nerd_font_variant = "mono";
-          kind_icons = {
-            Text = "󰉿";
-            Method = "";
-            Function = "󰊕";
-            Constructor = "󰒓";
-
-            Field = "󰜢";
-            Variable = "󰆦";
-            Property = "󰖷";
-
-            Class = "󱡠";
-            Interface = "󱡠";
-            Struct = "󱡠";
-            Module = "󰅩";
-
-            Unit = "󰪚";
-            Value = "󰦨";
-            Enum = "󰦨";
-            EnumMember = "󰦨";
-
-            Keyword = "󰻾";
-            Constant = "󰏿";
-
-            Snippet = "󱄽";
-            Color = "󰏘";
-            File = "󰈔";
-            Reference = "󰬲";
-            Folder = "󰉋";
-            Event = "󱐋";
-            Operator = "󰪚";
-            TypeParameter = "󰬛";
-            Error = "󰏭";
-            Warning = "󰏯";
-            Information = "󰏮";
-            Hint = "󰏭";
-
-            Emoji = "🤶";
-          };
-        };
         completion = {
           menu = {
             border = "none";
@@ -137,13 +90,19 @@
                   __unkeyed-1 = "label";
                 }
                 {
-                  __unkeyed-1 = "kind_icon";
-                  __unkeyed-2 = "kind";
+                  __unkeyed-1 = "label_description";
                   gap = 1;
                 }
-                {__unkeyed-1 = "source_name";}
+                {__unkeyed-2 = "kind_icon";}
+                {__unkeyed-2 = "kind";}
               ];
             };
+            # Hide in command
+            auto_show.__raw = ''
+              function(ctx)
+                return ctx.mode ~= "cmdline"
+              end
+            '';
           };
           trigger = {
             show_in_snippet = false;

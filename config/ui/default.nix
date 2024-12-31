@@ -5,7 +5,7 @@
     ./indent-blankline.nix
     ./lualine.nix
     ./mini.nix
-    # ./oil.nix
+    ./oil.nix
     # ./specs.nix
     ./snacks.nix
     ./noice.nix

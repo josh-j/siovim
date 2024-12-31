@@ -25,8 +25,8 @@
       };
       bufremove = {};
       files = {
-        windows.preview = true;
-        windows.width_preview = 60;
+        # windows.preview = true;
+        # windows.width_preview = 60;
       };
       move = {};
     };
