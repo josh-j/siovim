@@ -3,10 +3,18 @@
     enable = true;
     settings = {
       input = {
+        enabled = true;
         relative = "win";
       };
       select = {
-        backend = ["telescope"];
+        enabled = true;
+        backend = [
+          "telescope"
+          "fzf_lua"
+          "fzf"
+          "builtin"
+          "nui"
+        ];
       };
     };
   };
