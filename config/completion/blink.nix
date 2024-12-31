@@ -5,7 +5,7 @@
   ...
 }: {
   extraPlugins = with pkgs.vimPlugins; [
-    blink-cmp-copilot
+    # blink-cmp-copilot
   ];
 
   plugins = {
@@ -40,7 +40,7 @@
           default = [
             "buffer"
             "calc"
-            "copilot"
+            # "copilot"
             "emoji"
             "git"
             "lsp"
@@ -55,10 +55,10 @@
               name = "emoji";
               module = "blink.compat.source";
             };
-            copilot = {
-              name = "copilot";
-              module = "blink-cmp-copilot";
-            };
+            # copilot = {
+            #   name = "copilot";
+            #   module = "blink-cmp-copilot";
+            # };
             git = {
               name = "git";
               module = "blink.compat.source";
