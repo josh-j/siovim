@@ -5,10 +5,12 @@
     ./completion
     ./keymaps
     ./lsp
+    ./mini
     ./plugins
+    ./snacks
     ./treesitter
     ./ui
-    ./alpha.nix
+    # ./alpha.nix
     ./autocmds.nix
     ./bufferline.nix
     ./colorscheme.nix

@@ -20,17 +20,17 @@
       mode = "n";
     }
 
-    {
-      action = "o<Esc>";
-      key = "o";
-      mode = "n";
-    }
-
-    {
-      action = "O<Esc>";
-      key = "O";
-      mode = "n";
-    }
+    # {
+    #   action = "o<Esc>";
+    #   key = "o";
+    #   mode = "n";
+    # }
+    #
+    # {
+    #   action = "O<Esc>";
+    #   key = "O";
+    #   mode = "n";
+    # }
     #
     # {
     #   action = ":vsplit<CR>";

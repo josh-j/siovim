@@ -1,5 +1,23 @@
 {
   config = {
+    performance = {
+      byteCompileLua = {
+        enable = true;
+        nvimRuntime = true;
+        configs = true;
+        plugins = true;
+      };
+    };
+    diagnostics = {
+      update_in_insert = true;
+      severity_sort = true;
+      float = {
+        border = "rounded";
+      };
+      jump = {
+        severity.__raw = "vim.diagnostic.severity.WARN";
+      };
+    };
     clipboard = {
       register = "unnamedplus";
     };
@@ -25,7 +43,8 @@
       splitkeep = "cursor";
       swapfile = false;
       undofile = true;
-      updatetime = 300;
+      # updatetime = 300;
+      updatetime = 50;
       writebackup = false;
       expandtab = true;
       shiftwidth = 4;

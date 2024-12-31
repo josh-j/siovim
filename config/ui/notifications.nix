@@ -7,15 +7,67 @@
   plugins.noice = {
     enable = true;
     settings = {
-      presets = {
-        bottom_search = false;
-        command_palette = true;
-        long_message_to_split = false;
-        lsp_doc_border = true;
-        inc_rename = true;
+      notify = {
+        enabled = false;
+        view = "notify";
       };
-      notify.enabled = true;
-      messages.enabled = true;
+      messages = {
+        enabled = true;
+        view = "mini";
+      };
+      lsp = {
+        message = {
+          enabled = false;
+        };
+        progress = {
+          enabled = false;
+          view = "mini";
+        };
+      };
+      popupmenu = {
+        enabled = true;
+        backend = "nui";
+      };
+      cmdline = {
+        format = {
+          filter = {
+            pattern = [
+              ":%s*%%s*s:%s*"
+              ":%s*%%s*s!%s*"
+              ":%s*%%s*s/%s*"
+              "%s*s:%s*"
+              ":%s*s!%s*"
+              ":%s*s/%s*"
+            ];
+            icon = "";
+            lang = "regex";
+          };
+          replace = {
+            pattern = [
+              ":%s*%%s*s:%w*:%s*"
+              ":%s*%%s*s!%w*!%s*"
+              ":%s*%%s*s/%w*/%s*"
+              "%s*s:%w*:%s*"
+              ":%s*s!%w*!%s*"
+              ":%s*s/%w*/%s*"
+            ];
+            icon = "󱞪";
+            lang = "regex";
+          };
+          range = {
+            pattern = [
+              ":%s*%%s*s:%w*:%w*:%s*"
+              ":%s*%%s*s!%w*!%w*!%s*"
+              ":%s*%%s*s/%w*/%w*/%s*"
+              "%s*s:%w*:%w*:%s*"
+              ":%s*s!%w*!%w*!%s*"
+              ":%s*s/%w*/%w*/%s*"
+            ];
+            icon = "";
+            lang = "regex";
+          };
+        };
+      };
     };
   };
 }
