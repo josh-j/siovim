@@ -10,10 +10,8 @@
     ./treesitter
     ./ui
     ./autocmds.nix
-    ./bufferline.nix
     ./colorscheme.nix
     ./extra.nix
-    ./lualine.nix
     ./options.nix
   ];
 }
