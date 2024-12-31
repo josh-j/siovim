@@ -1,9 +1,9 @@
 {pkgs, ...}: {
-  plugins.notify = {
-    enable = pkgs.lib.mkDefault true;
-    level = "info";
-    backgroundColour = "#191724";
-  };
+  # plugins.notify = {
+  #   enable = pkgs.lib.mkDefault true;
+  #   level = "info";
+  #   backgroundColour = "#191724";
+  # };
   plugins.noice = {
     enable = true;
     settings = {
