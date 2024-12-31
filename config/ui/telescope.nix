@@ -8,6 +8,9 @@
         layout_config = {horizontal = {prompt_position = "top";};};
       };
       pickers = {
+        colorscheme = {
+          enable_preview = true;
+        };
         find_files = {theme = "dropdown";};
         git_files = {theme = "dropdown";};
         fd = {theme = "dropdown";};

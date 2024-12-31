@@ -3,9 +3,10 @@
     ./dressing.nix
     ./telescope.nix
     ./indent-blankline.nix
-    # ./mini.nix
+    ./mini.nix
     # ./oil.nix
     # ./specs.nix
-    ./notifications.nix
+    ./snack.nix
+    ./noice.nix
   ];
 }

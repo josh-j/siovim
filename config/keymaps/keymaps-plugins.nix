@@ -1,17 +1,5 @@
 {
   config.keymaps = [
-    # Alpha dashboard
-    {
-      action = "<cmd>Alpha<CR>";
-      key = "<leader>;";
-      mode = "n";
-      options = {
-        noremap = true;
-        silent = true;
-        desc = "Dashboard";
-      };
-    }
-
     # NvimTree
     {
       action = "<cmd>NvimTreeFindFileToggle<CR>";
@@ -174,7 +162,7 @@
       };
     }
 
-  # mini.files
+    # mini.files
     {
       action = "<cmd>lua require('mini.files').open(vim.api.nvim_buf_get_name(0))<CR>";
       key = "<leader>/";
