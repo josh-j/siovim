@@ -36,6 +36,16 @@
           enabled = true;
         };
 
+        menu = {
+          draw.treesitter = ["lsp"];
+          # Do not auto show menu on cmdline or search
+          auto_show.__raw = ''
+            function(ctx)
+              return ctx.mode ~= "cmdline"
+            end
+          '';
+        };
+
         sources = {
           default = [
             "buffer"

@@ -5,9 +5,6 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nixvim.url = "github:nix-community/nixvim";
     flake-parts.url = "github:hercules-ci/flake-parts";
-    blink-cmp = {
-      url = "github:saghen/blink.cmp";
-    };
   };
 
   outputs = {

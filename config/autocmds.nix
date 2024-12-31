@@ -36,6 +36,8 @@
     #   pattern = "*";
     #   command = "lua vim.highlight.on_yank{timeout=500}";
     # }
+
+    # Close on 'q'
     {
       event = ["FileType"];
       pattern = [
@@ -86,6 +88,8 @@
         '';
       };
     }
+
+    # Disable miniindent scope
     {
       event = ["FileType"];
       pattern = [
@@ -96,9 +100,15 @@
         "help"
         "man"
         "lspinfo"
+        "Startup"
+        "startup"
         "oil"
+        "NvimTree_1"
+        "NvimTree"
+        "NVIM"
         "spectre_panel"
         "lir"
+        "SnacksDashboardOpened"
         "snacks_dashboard"
         "snacks"
         "DressingSelect"

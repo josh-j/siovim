@@ -14,6 +14,9 @@
         close.enable = false;
       };
       indentscope = {
+        draw.animation.__raw = ''
+          require('mini.indentscope').gen_animation.none()
+        '';
         options = {
           try_as_border = true;
           border = "both";

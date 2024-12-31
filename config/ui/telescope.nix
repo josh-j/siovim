@@ -1,50 +1,13 @@
 {pkgs, ...}: {
-  extraPackages = with pkgs; [ ripgrep ];
   plugins.telescope = {
     enable = pkgs.lib.mkDefault true;
     settings = {
-      # defaults = {
-      #   path_display = ["truncate"];
-      #   sorting_strategy = "ascending";
-      #   layout_config = {horizontal = {prompt_position = "top";};};
-      # };
-
       defaults = {
-        vimgrep_arguments = [
-          "${pkgs.ripgrep}/bin/rg"
-          "-L"
-          "--color=never"
-          "--no-heading"
-          "--with-filename"
-          "--line-number"
-          "--column"
-          "--smart-case"
-          "--fixed-strings"
-        ];
-        selection_caret = "  ";
-        entry_prefix = "  ";
-        layout_strategy = "flex";
-        layout_config = {
-          horizontal = {
-            prompt_position = "top";
-          };
-        };
+        path_display = ["truncate"];
         sorting_strategy = "ascending";
-        file_ignore_patterns = [
-          "^.git/"
-          "^.mypy_cache/"
-          "^__pycache__/"
-          "^output/"
-          "^data/"
-          "%.ipynb"
-        ];
-        set_env.COLORTERM = "truecolor";
+        layout_config = {horizontal = {prompt_position = "top";};};
       };
-
       pickers = {
-        colorscheme = {
-          enable_preview = true;
-        };
         find_files = {theme = "dropdown";};
         git_files = {theme = "dropdown";};
         fd = {theme = "dropdown";};
@@ -105,13 +68,61 @@
       };
     };
     keymaps = {
-      "<leader>f" = {
-        action = "git_files";
-        options.desc = "Files";
+      "<leader>ff" = {
+        action = "find_files";
+        options.desc = "Telescope Files";
       };
-      "<leader>s" = {
+      "<leader>fg" = {
+        action = "git_files";
+        options.desc = "Telescope Git Files";
+      };
+      "<leader>fd" = {
+        action = "fd";
+        options.desc = "Telescope fd";
+      };
+      "<leader>fm" = {
+        action = "marks";
+        options.desc = "Telescope marks";
+      };
+      "<leader>fR" = {
+        action = "registers";
+        options.desc = "Telescope registers";
+      };
+      "<leader>fj" = {
+        action = "jumplist";
+        options.desc = "Telescope jumplist";
+      };
+      "<leader>sg" = {
         action = "live_grep";
-        options.desc = "Search Text";
+        options.desc = "Telescope Live Grep";
+      };
+      "<leader>sb" = {
+        action = "current_buffer_fuzzy_find";
+        options.desc = "Telescope search current buffer";
+      };
+      "<leader>th" = {
+        action = "help_tags";
+        options.desc = "Telescope find help";
+      };
+      "<leader>tm" = {
+        action = "man_pages";
+        options.desc = "Telescope Man Pages";
+      };
+      "<leader>tk" = {
+        action = "keymaps";
+        options.desc = "Telescope Keymaps";
+      };
+      "<leader>to" = {
+        action = "vim_options";
+        options.desc = "Telescope Vim options";
+      };
+      "<leader>tc" = {
+        action = "commands";
+        options.desc = "Telescope Commands";
+      };
+      "<leader>gC" = {
+        action = "git_commits";
+        options.desc = "Telescope git commits";
       };
     };
   };

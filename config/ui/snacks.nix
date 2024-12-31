@@ -115,9 +115,9 @@
             icon = " ";
             title = "git status";
             section = "terminal";
-            # enabled.__raw = ''
-            #   snacks.git.get_root() ~= nil
-            # '';
+            enabled.__raw = ''
+              Snacks.git.get_root() ~= nil
+            '';
             cmd = "${pkgs.hub}/bin/hub status --short --branch --renames";
             height = 5;
             padding = 1;

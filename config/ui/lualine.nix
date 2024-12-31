@@ -9,6 +9,7 @@
         "alpha"
         "starter"
         "snacks_dashboard"
+        "snacks"
       ];
       sections = {
         lualine_x = [

@@ -8,6 +8,7 @@
         "help"
         "alpha"
         "snacks_dashboard"
+        "snacks"
         "dashboard"
         "neo-tree"
         "lazy"
