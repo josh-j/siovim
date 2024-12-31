@@ -59,7 +59,6 @@ to enable when you install `pkgs.siovim`? No problem!
           }
         ];
 
-
         plugins = {
           lsp.servers = {
             # full list of language servers you can enable on the left bar here:
@@ -125,3 +124,6 @@ https://github.com/LGUG2Z/JeezyVim
 [dileep-kishore's neovim
 configuration](https://github.com/dileep-kishore/neovim),
 https://github.com/elythh/nixvim/tree/82a4a473b1a8edbf1e3213e3d09c05e289f4696d/config/colors
+
+Like the appearance of the following:
+https://github.com/spector700/Akari/tree/main/config/plugins/ui

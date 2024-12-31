@@ -1,10 +1,12 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   extraPlugins = with pkgs.vimPlugins; [
     plenary-nvim
     vim-repeat
     lspkind-nvim
     zen-mode-nvim
     twilight-nvim
+    nui-nvim # FIXME
     vim-just
     {
       plugin = tint-nvim;

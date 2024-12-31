@@ -23,12 +23,16 @@
         };
         symbol = "¦";
       };
-      bufremove = {};
+      bufremove = { };
       files = {
         # windows.preview = true;
         # windows.width_preview = 60;
       };
-      move = {};
+      move = { };
+      cursorword = {
+        delay = 0;
+      };
+      ts-context-commentstring.enable = true;
     };
   };
 }

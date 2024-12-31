@@ -4,10 +4,16 @@
     settings = {
       defaults = {
         sorting_strategy = "ascending";
-        layout_strategy = "horizontal";
+        layout_strategy = "bottom_pane";
         layout_config = {
           horizontal = {
             prompt_position = "top";
+            preview_width = 0.55;
+            results_width = 0.8;
+          };
+
+          vertical = {
+            prompt_position = "bottom";
             preview_width = 0.55;
             results_width = 0.8;
           };
@@ -19,7 +25,6 @@
         height = 0.80;
         preview_cutoff = 120;
         file_ignore_patterns = ["node_modules"];
-        #generic_sorter = require ("telescope.sorters").get_generic_fuzzy_sorter;
         path_display = ["truncate"];
         winblend = 0;
         border = {};
@@ -29,7 +34,7 @@
         set_env = {"COLORTERM" = "truecolor";};
       };
       pickers = {
-        find_files = {theme = "ivy";};
+        find_files = {theme = "dropdown";};
         git_files = {theme = "dropdown";};
         fd = {theme = "dropdown";};
         buffers = {theme = "dropdown";};

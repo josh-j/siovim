@@ -1,7 +1,7 @@
 {
   autoCmd = [
     {
-      event = ["BufWinEnter"];
+      event = [ "BufWinEnter" ];
       callback = {
         __raw = ''
           function()
@@ -11,7 +11,7 @@
       };
     }
     {
-      event = ["FileType"];
+      event = [ "FileType" ];
       pattern = [
         "markdown"
       ];
@@ -26,7 +26,7 @@
 
     # Close Telescope prompt in insert mode by clicking escape
     {
-      event = ["FileType"];
+      event = [ "FileType" ];
       pattern = "TelescopePrompt";
       command = "inoremap <buffer><silent> <ESC> <ESC>:close!<CR>";
     }
@@ -39,7 +39,7 @@
 
     # Close on 'q'
     {
-      event = ["FileType"];
+      event = [ "FileType" ];
       pattern = [
         "netrw"
         "Jaq"
@@ -69,7 +69,7 @@
       };
     }
     {
-      event = ["CmdWinEnter"];
+      event = [ "CmdWinEnter" ];
       callback = {
         __raw = ''
           function()
@@ -79,7 +79,7 @@
       };
     }
     {
-      event = ["VimResized"];
+      event = [ "VimResized" ];
       callback = {
         __raw = ''
           function()
@@ -91,7 +91,7 @@
 
     # Disable miniindent scope
     {
-      event = ["FileType"];
+      event = [ "FileType" ];
       pattern = [
         "netrw"
         "Jaq"
@@ -105,6 +105,7 @@
         "oil"
         "NvimTree_1"
         "NvimTree"
+        "neo-tree"
         "NVIM"
         "spectre_panel"
         "lir"
@@ -117,6 +118,7 @@
         "notify"
         "dashboard"
         "Trouble"
+        "trouble"
         "toggleterm"
         ""
       ];

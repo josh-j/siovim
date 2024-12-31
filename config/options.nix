@@ -1,5 +1,8 @@
 {
   config = {
+    # feature that enhances the way Neovim loads and executes Lua modules,
+    # offering improved performance and flexibility.
+    luaLoader.enable = true;
     performance = {
       byteCompileLua = {
         enable = true;
@@ -26,7 +29,7 @@
       termguicolors = true;
       showmode = false;
       backup = false;
-      cmdheight = 1;
+      cmdheight = 2;
       conceallevel = 0;
       encoding = "utf-8";
       fileencoding = "utf-8";
@@ -34,6 +37,8 @@
       hlsearch = true;
       incsearch = true;
       inccommand = "nosplit";
+      grepprg = "rg --vimgrep";
+      grepformat = "%f:%l:%c:%m";
       mouse = "a";
       ignorecase = true;
       smartcase = true;
@@ -43,7 +48,6 @@
       splitkeep = "cursor";
       swapfile = false;
       undofile = true;
-      # updatetime = 300;
       updatetime = 50;
       writebackup = false;
       expandtab = true;
@@ -56,6 +60,8 @@
       signcolumn = "yes";
       wrap = true;
       scrolloff = 8;
+      # Maximum number of items to show in the popup menu (0 means "use available screen space")
+      pumheight = 0;
       listchars = {
         tab = "󰌒 ";
         trail = "•";

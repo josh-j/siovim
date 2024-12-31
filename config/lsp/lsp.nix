@@ -13,7 +13,6 @@
       lua_ls.enable = pkgs.lib.mkDefault true;
       tailwindcss.enable = pkgs.lib.mkDefault true;
       tinymist.enable = pkgs.lib.mkDefault true;
-      # powershell_es.enable = pkgs.lib.mkDefault true;
       cssls.enable = pkgs.lib.mkDefault true;
       html.enable = pkgs.lib.mkDefault true;
       htmx.enable = pkgs.lib.mkDefault true;
