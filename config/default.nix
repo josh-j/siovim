@@ -6,9 +6,7 @@
     ./completion
     ./keymaps
     ./lsp
-    ./mini
     ./plugins
-    ./snacks
     ./treesitter
     ./ui
     ./autocmds.nix
