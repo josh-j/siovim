@@ -8,7 +8,7 @@
           "vim.lsp.util.stylize_markdown" = true;
           "cmp.entry.get_documentation" = true;
         };
-        progress.enabled = true;
+        progress.enabled = false;
       };
 
       presets = {
@@ -25,9 +25,9 @@
           filter = {
             event = "msg_show";
             any = [
-              { find = "%d+L, %d+B"; }
-              { find = "; after #%d+"; }
-              { find = "; before #%d+"; }
+              {find = "%d+L, %d+B";}
+              {find = "; after #%d+";}
+              {find = "; before #%d+";}
             ];
           };
           view = "mini";
