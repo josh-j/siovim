@@ -1,8 +1,20 @@
 {
   config.keymaps = [
     # NvimTree
+    # {
+    #   action = "<cmd>NvimTreeFindFileToggle<CR>";
+    #   key = "<leader>e";
+    #   mode = "n";
+    #   options = {
+    #     noremap = true;
+    #     silent = true;
+    #     desc = "Explorer";
+    #   };
+    # }
+
+    # NeoTree
     {
-      action = "<cmd>NvimTreeFindFileToggle<CR>";
+      action = "<cmd>Neotree toggle<CR>";
       key = "<leader>e";
       mode = "n";
       options = {

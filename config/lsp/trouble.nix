@@ -1,58 +1,49 @@
 {
-  lib,
-  config,
-  ...
-}: {
   plugins.trouble = {
     enable = true;
+    settings.auto_close = true;
   };
-  keymaps = lib.mkIf config.plugins.trouble.enable [
+
+  keymaps = [
     {
       mode = "n";
-      key = "<leader>xQ";
-      action = "<CMD>Trouble qflist toggle<CR>";
-      options = {
-        desc = "Trouble quifick toggle";
-      };
-    }
-    {
-      mode = "n";
-      key = "<leader>xL";
-      action = "<CMD>Trouble loclist toggle<CR>";
-      options = {
-        desc = "Trouble loclist toggle";
-      };
-    }
-    {
-      mode = "n";
-      key = "<leader>cs";
-      action = "<CMD>Trouble symbols focus=false<CR>";
-      options = {
-        desc = "Trouble symbols toggle";
-      };
+      key = "<leader>x";
+      action = "+diagnostics/quickfix";
     }
     {
       mode = "n";
       key = "<leader>xx";
-      action = "<CMD>Trouble diagnostics toggle<CR>";
+      action = "<cmd>TroubleToggle<cr>";
       options = {
-        desc = "Trouble diagnostics toggle";
+        silent = true;
+        desc = "Document Diagnostics (Trouble)";
       };
     }
     {
       mode = "n";
-      key = "[c";
-      action = ":lua require('trouble').next {skip_groups = true, jump = true }<CR>";
+      key = "<leader>xX";
+      action = "<cmd>TroubleToggle workspace_diagnostics<cr>";
       options = {
-        desc = "Trouble next";
+        silent = true;
+        desc = "Workspace Diagnostics (Trouble)";
       };
     }
     {
       mode = "n";
-      key = "]c";
-      action = ":lua require('trouble').prev {skip_groups = true, jump = true }<CR>";
+      key = "<leader>xt";
+      action = "<cmd>TroubleToggle todo<cr>";
       options = {
-        desc = "Trouble prev";
+        silent = true;
+        desc = "Todo (Trouble)";
+      };
+    }
+    {
+      mode = "n";
+      key = "<leader>xq";
+      action = "<cmd>TodoQuickFix<cr>";
+      options = {
+        silent = true;
+        desc = "Quickfix List (Trouble)";
       };
     }
   ];

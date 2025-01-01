@@ -32,7 +32,7 @@
       cursorword = {
         delay = 0;
       };
-      ts-context-commentstring.enable = true;
+      # ts-context-commentstring.enable = true;
     };
   };
 }
