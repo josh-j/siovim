@@ -1,38 +1,28 @@
 {
-  plugins.mini = {
-    enable = true;
-    mockDevIcons = true;
-    modules = {
-      icons = {
-        style = "glpyh";
-      };
-      animate = {
-        cursor.enable = false;
-        scroll.enable = false;
-        resize.enable = false;
-        open.enable = false;
-        close.enable = false;
-      };
-      indentscope = {
-        draw.animation.__raw = ''
-          require('mini.indentscope').gen_animation.none()
-        '';
-        options = {
-          try_as_border = true;
-          border = "both";
+  plugins = {
+    mini = {
+      enable = true;
+      modules = {
+        comment = {
+          options = {
+            customCommentString = ''
+              <cmd>lua require("ts_context_commentstring.internal").calculate_commentstring() or vim.bo.commentstring<cr>
+            '';
+          };
         };
-        symbol = "¦";
+        # Highlight word under cursor
+        cursorword = {
+          delay = 0;
+        };
+
+        # Show indent lines
+        indentscope = {
+          symbol = "│";
+          draw.delay = 0;
+        };
       };
-      bufremove = { };
-      files = {
-        # windows.preview = true;
-        # windows.width_preview = 60;
-      };
-      move = { };
-      cursorword = {
-        delay = 0;
-      };
-      # ts-context-commentstring.enable = true;
     };
+
+    ts-context-commentstring.enable = true;
   };
 }

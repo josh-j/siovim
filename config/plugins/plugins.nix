@@ -1,5 +1,4 @@
-{ pkgs, ... }:
-{
+{pkgs, ...}: {
   plugins = {
     nvim-autopairs = {
       enable = pkgs.lib.mkDefault true;
@@ -58,5 +57,7 @@
       };
     };
     web-devicons.enable = true;
+    persistence.enable = true;
+    project-nvim.enable = true;
   };
 }
