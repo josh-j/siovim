@@ -1,6 +1,7 @@
 { pkgs, ... }:
 {
   plugins = {
+
     lsp = {
       enable = pkgs.lib.mkDefault true;
       servers.typos_lsp.enable = pkgs.lib.mkDefault true;
@@ -8,7 +9,6 @@
         "<c-k>" = "signature_help";
         "gi" = "implementation";
       };
-      lint.enable = pkgs.lib.mkDefault true;
       servers = {
         bashls.enable = pkgs.lib.mkDefault true;
         dockerls.enable = pkgs.lib.mkDefault true;
@@ -29,6 +29,8 @@
         taplo.enable = pkgs.lib.mkDefault true;
       };
     };
+
+    lint.enable = pkgs.lib.mkDefault true;
     lsp-format.enable = pkgs.lib.mkDefault true;
     lsp-signature.enable = pkgs.lib.mkDefault true;
   };
