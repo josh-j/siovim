@@ -59,7 +59,7 @@
     }
     {
       action = "<cmd>Telescope diagnostics theme=dropdown<cr>";
-      key = "<leader>d";
+      key = "<leader>xd";
       mode = "n";
       options = {
         noremap = true;
@@ -109,7 +109,7 @@
     }
     {
       action = "<cmd>Lspsaga lsp_rename ++project<cr>";
-      key = "<leader>r";
+      key = "<leader>lR";
       mode = "n";
       options = {
         noremap = true;
@@ -174,17 +174,6 @@
       };
     }
 
-    # mini.files
-    {
-      action = "<cmd>lua require('mini.files').open(vim.api.nvim_buf_get_name(0))<CR>";
-      key = "<leader>/";
-      mode = "n";
-      options = {
-        noremap = true;
-        silent = true;
-        desc = "Open mini.files";
-      };
-    }
     # Zen mode and twilight
     {
       action = "<cmd>ZenMode<CR>";
@@ -210,7 +199,7 @@
     # TreeSJ
     {
       action = "<cmd>lua require('treesj').toggle()<CR>";
-      key = "<leader>j";
+      key = "<leader>uj";
       mode = "n";
       options = {
         noremap = true;

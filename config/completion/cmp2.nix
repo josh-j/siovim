@@ -56,10 +56,10 @@
             name = "luasnip";
             priority = 70;
           }
-          {
-            name = "codeium";
-            priority = 60;
-          }
+          # {
+          #   name = "codeium";
+          #   priority = 60;
+          # }
           {
             name = "buffer";
             priority = 50;

@@ -1,25 +1,68 @@
-{pkgs, ...}: {
+{
   plugins.which-key = {
-    enable = pkgs.lib.mkDefault true;
+    enable = true;
     settings = {
-      notify = false;
-      layout = {align = "center";};
-      triggersNoWait = ["`" "'" "<leader>" "g`" "g'" "\"" "<c-r>" "z="];
-      icons.colors = false;
+      icons = {
+        breadcrumb = "»";
+        group = "+";
+        separator = ""; # ➜
+      };
       win = {
         border = "rounded";
-        title = true;
-        zindex = 10;
         padding = [
           1
-          2
+          1
         ];
       };
-      registrations = {
-        "<leader>l" = "+LSP";
-        "<leader>z" = "+Zen";
-        "<leader>p" = "+Parameter swap";
-      };
+      spec = [
+        # General Mappings
+        {
+          __unkeyed-1 = "<leader>c";
+          mode = [
+            "n"
+            "v"
+          ];
+          group = "+code";
+        }
+        {
+          __unkeyed-1 = "<leader>f";
+          mode = "n";
+          group = "+find/file";
+        }
+
+        {
+          __unkeyed-1 = "<leader>g";
+          mode = [
+            "n"
+            "v"
+          ];
+          group = "+git";
+        }
+
+        {
+          __unkeyed-1 = "<leader>q";
+          mode = "n";
+          group = "+quit/session";
+        }
+
+        {
+          __unkeyed-1 = "<leader>s";
+          mode = "n";
+          group = "+search";
+        }
+
+        {
+          __unkeyed-1 = "<leader>u";
+          mode = "n";
+          group = "+ui";
+        }
+
+        {
+          __unkeyed-1 = "<leader>w";
+          mode = "n";
+          group = "+windows";
+        }
+      ];
     };
   };
 }

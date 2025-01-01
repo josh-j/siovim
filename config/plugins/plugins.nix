@@ -1,4 +1,5 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   plugins = {
     nvim-autopairs = {
       enable = pkgs.lib.mkDefault true;
@@ -18,24 +19,21 @@
           keyword = "wide";
         };
         keywords = {
-          QUESTION = {icon = "";};
+          QUESTION = {
+            icon = "";
+          };
         };
       };
     };
     comment.enable = pkgs.lib.mkDefault true;
     sleuth.enable = pkgs.lib.mkDefault true;
     nvim-tree = {
-      enable = pkgs.lib.mkDefault true;
+      enable = false;
       updateFocusedFile.enable = pkgs.lib.mkDefault true;
     };
-    toggleterm = {
-      enable = pkgs.lib.mkDefault true;
-      settings = {
-        direction = "float";
-        floatOpts = {border = "single";};
-        terminalMappings = pkgs.lib.mkDefault true;
-      };
-    };
+    trim.enable = true;
+    neoscroll.enable = true;
+    dressing.enable = true;
     illuminate = {
       enable = pkgs.lib.mkDefault true;
       underCursor = pkgs.lib.mkDefault true;
