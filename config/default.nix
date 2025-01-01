@@ -1,11 +1,11 @@
-{ ... }:
-{
+{...}: {
   # Import all your configuration modules here
 
   imports = [
     ./ai
     ./completion
     ./debug
+    ./git
     ./keymaps
     ./lsp
     ./plugins
