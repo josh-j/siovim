@@ -5,15 +5,15 @@
       settings = {
         transparent = true;
         italic_comments = true;
-        hide_fillchars = true;
-        terminal_colors = true;
+        hide_fillchars = false;
+        terminal_colors = false;
 
         theme = {
           colors = {
             bg = "#1c1c1c";
-            fg = "#888888";
-            grey = "#808080";
-            blue = "#5fafd7";
+            fg = "#a0a0a0";
+            grey = "#585858";
+            blue = "#5f8787";
             green = "#5faf5f";
             cyan = "#00afaf";
             red = "#af005f";
@@ -21,7 +21,7 @@
             magenta = "#af87d7";
             pink = "#ff5faf";
             orange = "#ffaf00";
-            purple = "#7b54b6";
+            purple = "#afd700";
           };
           variation = "dark";
           # saturation = 0.7;
