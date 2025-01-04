@@ -1,9 +1,9 @@
-{ pkgs, ... }:
-{
+{pkgs, ...}: {
   plugins = {
     project-nvim.enableTelescope = true;
     telescope = {
       enable = true;
+
       extensions = {
         fzf-native.enable = true;
         undo.enable = true;
@@ -17,9 +17,26 @@
       };
 
       settings.defaults = {
+
+      pickers = {
+        colorscheme = {
+          enable_preview = true;
+        };
+      };
+        selection_caret = "  ";
+        entry_prefix = "  ";
         prompt_prefix = "   ";
         color_devicons = true;
         set_env.COLORTERM = "truecolor";
+
+        file_ignore_patterns = [
+          "^.git/"
+          "^.mypy_cache/"
+          "^__pycache__/"
+          "^output/"
+          "^data/"
+          "%.ipynb"
+        ];
 
         mappings = {
           i = {

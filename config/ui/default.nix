@@ -3,17 +3,17 @@
     ./bufferline.nix
     ./indent-blankline.nix
     ./lualine.nix
-    ./flash.nix
-    ./mini.nix
-    ./oil.nix
+    # ./flash.nix
+    # ./mini.nix
+    # ./oil.nix
     # ./specs.nix
-    ./precognition.nix
+    # ./precognition.nix
     ./snacks.nix
     ./noice.nix
     ./neotree.nix
-    ./yazi.nix
+    # ./yazi.nix
     ./telescope2.nix
-    ./toggleterm.nix
-    ./undotree.nix
+    # ./toggleterm.nix
+    # ./undotree.nix
   ];
 }

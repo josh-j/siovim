@@ -30,7 +30,7 @@
       };
     };
 
-    lint.enable = pkgs.lib.mkDefault true;
+    # lint.enable = pkgs.lib.mkDefault true;
     lsp-format.enable = pkgs.lib.mkDefault true;
     lsp-signature.enable = pkgs.lib.mkDefault true;
   };
