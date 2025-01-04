@@ -1,11 +1,40 @@
 {pkgs, ...}: {
   colorschemes = {
+    cyberdream = {
+      enable = pkgs.lib.mkDefault true;
+      settings = {
+        transparent = true;
+        italic_comments = true;
+        hide_fillchars = true;
+        terminal_colors = true;
+
+        theme = {
+          colors = {
+            bg = "#1c1c1c";
+            fg = "#888888";
+            grey = "#808080";
+            blue = "#5fafd7";
+            green = "#5faf5f";
+            cyan = "#00afaf";
+            red = "#af005f";
+            yellow = "#d7af5f";
+            magenta = "#af87d7";
+            pink = "#ff5faf";
+            orange = "#ffaf00";
+            purple = "#7b54b6";
+          };
+          variation = "dark";
+          # saturation = 0.7;
+        };
+      };
+    };
+
     oxocarbon = {
       enable = false;
     };
 
     gruvbox = {
-      enable = pkgs.lib.mkDefault true;
+      enable = false;
       settings = {
         transparent_mode = true;
         integrations = {
@@ -46,39 +75,39 @@
       };
     };
 
-    # tokyonight = {
-    #   enable = pkgs.lib.mkDefault true;
-    #   settings = {
-    #     day_brightness = 0.3;
-    #     dim_inactive = false;
-    #     hide_inactive_statusline = false;
-    #     light_style = "day";
-    #     lualine_bold = false;
-    #     on_colors = "function(colors) end";
-    #     on_highlights = "function(highlights, colors) end";
-    #     sidebars = [
-    #       "qf"
-    #       "vista_kind"
-    #       "terminal"
-    #       "packer"
-    #     ];
-    #     style = "storm";
-    #     styles = {
-    #       comments = {
-    #         italic = true;
-    #       };
-    #       floats = "dark";
-    #       functions = {};
-    #       keywords = {
-    #         italic = true;
-    #       };
-    #       sidebars = "dark";
-    #       variables = {};
-    #     };
-    #     terminal_colors = true;
-    #     transparent = true;
-    #   };
-    # };
+    tokyonight = {
+      enable = false;
+      settings = {
+        day_brightness = 0.3;
+        dim_inactive = false;
+        hide_inactive_statusline = false;
+        light_style = "day";
+        lualine_bold = false;
+        on_colors = "function(colors) end";
+        on_highlights = "function(highlights, colors) end";
+        sidebars = [
+          "qf"
+          "vista_kind"
+          "terminal"
+          "packer"
+        ];
+        style = "storm";
+        styles = {
+          comments = {
+            italic = true;
+          };
+          floats = "dark";
+          functions = {};
+          keywords = {
+            italic = true;
+          };
+          sidebars = "dark";
+          variables = {};
+        };
+        terminal_colors = true;
+        transparent = true;
+      };
+    };
 
     catppuccin = {
       enable = false;
