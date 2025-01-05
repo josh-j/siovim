@@ -5,7 +5,7 @@
     # lspkind-nvim
     # zen-mode-nvim
     # twilight-nvim
-    nui-nvim # FIXME
+    # nui-nvim # FIXME
     # vim-just
     # {
     #   plugin = tint-nvim;

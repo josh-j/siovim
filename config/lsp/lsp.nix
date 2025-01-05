@@ -1,10 +1,8 @@
-{ pkgs, ... }:
-{
+{pkgs, ...}: {
   plugins = {
-
     lsp = {
       enable = pkgs.lib.mkDefault true;
-      servers.typos_lsp.enable = pkgs.lib.mkDefault true;
+      servers.typos_lsp.enable = pkgs.lib.mkDefault false;
       keymaps.lspBuf = {
         "<c-k>" = "signature_help";
         "gi" = "implementation";
@@ -30,11 +28,17 @@
       };
     };
 
-    # lint.enable = pkgs.lib.mkDefault true;
+    lint.enable = pkgs.lib.mkDefault true;
     lsp-format.enable = pkgs.lib.mkDefault true;
     lsp-signature.enable = pkgs.lib.mkDefault true;
   };
 
-  # Custom diagnostic signs for LSP
-  extraConfigLua = builtins.readFile ./diagnostic_signs.lua;
+  keymaps = [
+    {
+      mode = "n";
+      key = "<leader>cl";
+      action = "<cmd>LspInfo<cr>";
+      options.desc = "Lsp Info";
+    }
+  ];
 }

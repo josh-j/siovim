@@ -4,7 +4,7 @@
     ./indent-blankline.nix
     ./lualine.nix
     # ./flash.nix
-    # ./mini.nix
+    ./mini.nix
     # ./oil.nix
     # ./specs.nix
     # ./precognition.nix

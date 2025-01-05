@@ -2,8 +2,11 @@
   plugins.indent-blankline = {
     enable = pkgs.lib.mkDefault true;
     settings = {
-      indent.char = "│";
-      whitespace.remove_blankline_trail = true;
+      indent = {
+        char = "│"; # "│" or "▎"
+        tab_char = "│";
+      };
+      scope.enabled = false;
       exclude.filetypes = [
         "help"
         "alpha"
