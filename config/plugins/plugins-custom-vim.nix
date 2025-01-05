@@ -28,12 +28,6 @@ in {
       plugin = powershell-nvim;
       config = "lua require('powershell').setup({ bundle_path = '/Users/joshj/Source/PowerShellEditorServices' })";
     }
-    {
-      plugin = tinted-vim;
-      config = ''
-        # vim.cmd.colorscheme('base16-ayu-dark')
-        vim.g.tinted_background_transparent = 1
-      '';
-    }
+
   ];
 }

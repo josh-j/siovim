@@ -9,10 +9,10 @@
     ./keymaps
     ./lsp
     ./plugins
+    ./themes
     ./treesitter
     ./ui
     ./autocmds.nix
-    # ./colorscheme.nix
     ./extra.nix
     ./options.nix
   ];
