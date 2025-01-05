@@ -18,6 +18,7 @@
     # ./rustaceanvim.nix
     # ./sleuth.nix
     # ./todo-comments.nix
+    ./transparent.nix
     # ./trim.nix
     # ./vim-matchup.nix
 

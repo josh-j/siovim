@@ -1,4 +1,4 @@
-{...}: {
+{lib, ...}: {
   # Import all your configuration modules here
 
   imports = [
@@ -16,4 +16,5 @@
     ./extra.nix
     ./options.nix
   ];
+  colorschemes.enable = lib.mkDefault true;
 }
