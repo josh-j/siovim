@@ -17,12 +17,11 @@
       };
 
       settings.defaults = {
-
-      pickers = {
-        colorscheme = {
-          enable_preview = true;
+        pickers = {
+          colorscheme = {
+            enable_preview = true;
+          };
         };
-      };
         selection_caret = "  ";
         entry_prefix = "  ";
         prompt_prefix = "   ";
@@ -36,6 +35,7 @@
           "^output/"
           "^data/"
           "%.ipynb"
+          "%.DS_Store"
         ];
 
         mappings = {

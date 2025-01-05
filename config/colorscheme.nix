@@ -16,13 +16,15 @@
               color1 = "#2c2c2c"; # selected line
               color2 = "#2c2c2c"; #indentlines
               # color3 = "#404050"; #linenumbers, folders
-              color3 = "#505060"; #linenumbers, folders
+              color3 = "#606070"; #linenumbers, folders
               # color4 = "#ff5faf"; #highlighted line number
               color4 = "#af87d7"; #highlighted line number
-              color5 = "#868086"; #varnames
-              color6 = "#9b9fb4"; #comments
+              # color5 = "#868086"; #varnames
+              color5 = "#948e8b";
+              color6 = "#44464f"; #comments
               color7 = "#009090";
-              color8 = "#606040"; # operators and strings
+              # color8 = "#606040"; # operators and strings
+              color8 = "#707050"; # operators and strings
             };
           };
           accent = {
