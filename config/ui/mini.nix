@@ -2,6 +2,7 @@
   plugins = {
     mini = {
       enable = true;
+      mockDevIcons = true;
       modules = {
         comment = {
           options = {
@@ -14,6 +15,8 @@
         cursorword = {
           delay = 0;
         };
+
+        icons = {};
 
         # Show indent lines
         indentscope = {
