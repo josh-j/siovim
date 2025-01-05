@@ -10,7 +10,10 @@
     colorschemes = {
       base16 = {
         enable = true;
-        colorscheme = "mountain";
+        # colorscheme = "mountain";
+        # colorscheme = "base16-mountain";
+        # colorscheme = "base16-mountain";
+        colorscheme = "ashes";
         setUpBar = true;
 
         settings = {
