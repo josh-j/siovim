@@ -1,5 +1,11 @@
 {
   config = {
+    extraConfigLuaPre = ''
+      vim.fn.sign_define("diagnosticsignerror", { text = " ", texthl = "diagnosticerror", linehl = "", numhl = "" })
+      vim.fn.sign_define("diagnosticsignwarn", { text = " ", texthl = "diagnosticwarn", linehl = "", numhl = "" })
+      vim.fn.sign_define("diagnosticsignhint", { text = "󰌵", texthl = "diagnostichint", linehl = "", numhl = "" })
+      vim.fn.sign_define("diagnosticsigninfo", { text = " ", texthl = "diagnosticinfo", linehl = "", numhl = "" })
+    '';
     # feature that enhances the way Neovim loads and executes Lua modules,
     # offering improved performance and flexibility.
     luaLoader.enable = true;
@@ -11,71 +17,83 @@
         plugins = true;
       };
     };
-    diagnostics = {
-      update_in_insert = true;
-      severity_sort = true;
-      float = {
-        border = "rounded";
-      };
-      jump = {
-        severity.__raw = "vim.diagnostic.severity.WARN";
-      };
-    };
+    # diagnostics = {
+    #   update_in_insert = true;
+    #   severity_sort = true;
+    #   float = {
+    #     border = "rounded";
+    #   };
+    #   jump = {
+    #     severity.__raw = "vim.diagnostic.severity.WARN";
+    #   };
+    # };
     clipboard = {
       register = "unnamedplus";
     };
     editorconfig.enable = true;
+    # clipboard.providers.wl-copy.enable = true;
     opts = {
-      termguicolors = true;
-      showmode = false;
-      backup = false;
-      cmdheight = 0;
-      conceallevel = 0;
-      encoding = "utf-8";
-      fileencoding = "utf-8";
-      title = true;
-      hlsearch = true;
-      incsearch = true;
-      inccommand = "nosplit";
-      grepprg = "rg --vimgrep";
-      grepformat = "%f:%l:%c:%m";
-      mouse = "a";
-      ignorecase = true;
-      smartcase = true;
-      smartindent = false;
-      splitbelow = true;
-      splitright = true;
-      splitkeep = "cursor";
-      swapfile = false;
-      undofile = true;
-      updatetime = 50;
-      writebackup = false;
-      expandtab = true;
-      shiftwidth = 4;
-      tabstop = 4;
-      cursorline = true;
-      laststatus = 3;
+      virtualedit = "block"; # Allow cursor to move where there is no text in visual block mode
+      cursorline = true; # Highlight the line where the cursor is located
+      cmdheight = 2; # more space in the neovim command line for displaying messages
+      showmode = false; # Dont show the editor mode in status line
+
+      # Enable relative line numbers
       number = true;
       relativenumber = true;
-      signcolumn = "yes";
+
+      # Tab spacing 2 spaces
+      tabstop = 2;
+      softtabstop = 2;
+      shiftwidth = 2;
+      expandtab = true;
+
+      smartindent = true;
       wrap = true;
-      scrolloff = 8;
+
+      # Smart indent on word wrap
+      breakindent = true;
+
+      # Undo stuff from days ago
+      swapfile = false;
+      backup = false;
+      undofile = true;
+
+      # Incremental search
+      hlsearch = true;
+      incsearch = true;
+
+      # Better splitting
+      splitbelow = true;
+      splitright = true;
+
+      # Enable ignorecase + smartcase for better searching
+      ignorecase = true;
+      smartcase = true; # Don't ignore case with capitals
+      grepprg = "rg --vimgrep";
+      grepformat = "%f:%l:%c:%m";
+
+      # Better colors
+      termguicolors = true;
+
+      # Decrease updatetime
+      updatetime = 50; # faster completion (4000ms default)
+
+      # Enable the sign column to prevent the screen from jumping
+      signcolumn = "yes";
+
+      # Reduce which-key timeout to 250s
+      timeoutlen = 250;
+
+      scrolloff = 8; # Will never have less than 8 characters as you scroll down
+      mouse = "a"; # Mouse
+
+      # Set encoding type
+      encoding = "utf-8";
+      fileencoding = "utf-8";
+
       # Maximum number of items to show in the popup menu (0 means "use available screen space")
       pumheight = 0;
-      listchars = {
-        tab = "󰌒 ";
-        trail = "•";
-        nbsp = "␣";
-      };
-      list = true;
-      showbreak = "↪ ";
-      foldmethod = "expr";
-      foldnestmax = 20;
-      foldminlines = 2;
-      foldlevel = 99;
-      foldlevelstart = 99;
-      foldenable = true;
-      foldexpr = "nvim_treesitter#foldexpr()";
     };
   };
 }

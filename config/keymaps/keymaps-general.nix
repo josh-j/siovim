@@ -31,18 +31,6 @@
     #   key = "O";
     #   mode = "n";
     # }
-    #
-    # {
-    #   action = ":vsplit<CR>";
-    #   key = "|";
-    #   mode = "n";
-    # }
-    #
-    # {
-    #   action = ":split<CR>";
-    #   key = "-";
-    #   mode = "n";
-    # }
 
     # Terminal escape back to nvim
     {
@@ -264,6 +252,64 @@
         noremap = true;
         silent = true;
         desc = "Paste without yanking";
+      };
+    }
+
+    # Paste stuff without saving the deleted word into the buffer
+    {
+      mode = "x";
+      key = "p";
+      action = "\"_dP";
+      options.desc = "Deletes to void register and paste over";
+    }
+    # Delete to void register
+    {
+      mode = [
+        "n"
+        "v"
+      ];
+      key = "<leader>D";
+      action = "\"_d";
+      options.desc = "Delete to void register";
+    }
+
+    # Better indenting
+    {
+      mode = "v";
+      key = "<";
+      action = "<gv";
+    }
+
+    {
+      mode = "v";
+      key = ">";
+      action = ">gv";
+    }
+
+    {
+      mode = "i";
+      key = "<C-a>";
+      action = "<cmd> norm! ggVG<cr>";
+      options.desc = "Select all lines in buffer";
+    }
+
+    {
+      mode = "n";
+      key = "J";
+      action = "mzJ`z";
+      options.desc = "Allow cursor to stay in the same place after appending to current line ";
+    }
+    # Clear search with ESC
+    {
+      mode = [
+        "n"
+        "i"
+      ];
+      key = "<esc>";
+      action = "<cmd>noh<cr><esc>";
+      options = {
+        silent = true;
+        desc = "Escape and clear hlsearch";
       };
     }
   ];
