@@ -12,7 +12,7 @@
     ./treesitter
     ./ui
     ./autocmds.nix
-    ./colorscheme.nix
+    # ./colorscheme.nix
     ./extra.nix
     ./options.nix
   ];
