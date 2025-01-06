@@ -59,6 +59,11 @@
       backup = false;
       undofile = true;
 
+      # Remove ~ on EOB
+      fillchars = {
+        eob = " ";
+      };
+
       # Incremental search
       hlsearch = true;
       incsearch = true;

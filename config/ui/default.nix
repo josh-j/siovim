@@ -12,7 +12,8 @@
     ./noice.nix
     ./neotree.nix
     # ./yazi.nix
-    ./telescope2.nix
+    # ./telescope2.nix
+    ./telescope.nix
     # ./toggleterm.nix
     # ./undotree.nix
   ];

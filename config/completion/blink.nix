@@ -1,125 +1,118 @@
 {
-  pkgs,
-  inputs,
-  system,
-  ...
-}: {
   plugins = {
-    cmp-emoji.enable = true;
-    cmp-git.enable = true;
-    cmp-spell.enable = true;
-    cmp-calc.enable = true;
-    cmp-treesitter.enable = true;
-    # lsp.capabilities =
-    #   # Lua
-    #   ''
-    #     capabilities = vim.tbl_deep_extend('force', capabilities, require('blink.cmp').get_lsp_capabilities())
-    #   '';
     blink-cmp = {
       enable = true;
-      # package = inputs.blink-cmp.packages.${system}.default;
-      # luaConfig.pre =
-      #   # lua
-      #   ''
-      #     require('blink.compat').setup({debug = true, impersonate_nvim_cmp = true})
-      #   '';
-      #
       settings = {
-        keymap = {
-          preset = "super-tab";
-        };
-        signature = {
-          enabled = true;
-        };
-
-        # menu = {
-        #   draw.treesitter = ["lsp"];
-        #   # Do not auto show menu on cmdline or search
-        #   auto_show.__raw = ''
-        #     function(ctx)
-        #       return ctx.mode ~= "cmdline"
-        #     end
-        #   '';
-        # };
-
-        sources = {
-          default = [
-            "buffer"
-            "calc"
-            # "copilot"
-            "emoji"
-            "git"
-            "lsp"
-            "luasnip"
-            "path"
-            "snippets"
-            "spell"
-            #"treesitter"
-          ];
-          providers = {
-            emoji = {
-              name = "emoji";
-              module = "blink.compat.source";
-            };
-            # copilot = {
-            #   name = "copilot";
-            #   module = "blink-cmp-copilot";
-            # };
-            git = {
-              name = "git";
-              module = "blink.compat.source";
-            };
-            spell = {
-              name = "spell";
-              module = "blink.compat.source";
-            };
-            calc = {
-              name = "calc";
-              module = "blink.compat.source";
-            };
-          };
-        };
+        keymap.preset = "enter";
         completion = {
+          documentation = {
+            auto_show = true;
+            auto_show_delay_ms = 0;
+          };
+          list = {
+            selection = "preselect";
+          };
           menu = {
-            border = "none";
             draw = {
-              gap = 1;
-              treesitter = ["lsp"];
+              gap = 2;
+              treesitter = [
+                "lsp"
+                # "copilot"
+              ];
               columns = [
                 {
                   __unkeyed-1 = "label";
-                }
-                {
-                  __unkeyed-1 = "label_description";
+                  __unkeyed-2 = "label_description";
                   gap = 1;
                 }
-                {__unkeyed-2 = "kind_icon";}
-                {__unkeyed-2 = "kind";}
+                {
+                  __unkeyed-1 = "kind_icon";
+                  __unkeyed-2 = "kind";
+                  gap = 1;
+                }
               ];
-            };
-            # Hide in command
-            auto_show.__raw = ''
-              function(ctx)
-                return ctx.mode ~= "cmdline"
-              end
-            '';
-          };
-          trigger = {
-            show_in_snippet = false;
-          };
-          documentation = {
-            auto_show = true;
-            window = {
-              border = "rounded";
+              components = {
+                label = {
+                  width = {
+                    fill = true;
+                  };
+                };
+                "kind_icon" = {
+                  width = {
+                    fill = true;
+                  };
+                };
+              };
             };
           };
-          accept = {
-            auto_brackets = {
-              enabled = true;
-            };
+        };
+        sources = {
+          default = [
+            "lsp"
+            "path"
+            "snippets"
+            "buffer"
+            # "copilot"
+          ];
+          cmdline.__raw = "{}";
+          providers = {
+            # copilot = {
+            #   name = "copilot";
+            #   module = "blink-cmp-copilot";
+            #   transform_items.__raw = # lua
+            #     ''
+            #       function(_, items)
+            #         local CompletionItemKind = require("blink.cmp.types").CompletionItemKind
+            #         local kind_idx = #CompletionItemKind + 1
+            #         CompletionItemKind[kind_idx] = "Copilot"
+            #         for _, item in ipairs(items) do
+            #           item.kind = kind_idx
+            #         end
+            #         return items
+            #       end
+            #     '';
+            #   score_offset = 100;
+            #   async = true;
+            # };
+          };
+        };
+        appearance = {
+          kind_icons = {
+            Copilot = "";
+            Text = "󰉿";
+            Method = "󰊕";
+            Function = "󰊕";
+            Constructor = "󰒓";
+
+            Field = "󰜢";
+            Variable = "󰆦";
+            Property = "󰖷";
+
+            Class = "󱡠";
+            Interface = "󱡠";
+            Struct = "󱡠";
+            Module = "󰅩";
+
+            Unit = "󰪚";
+            Value = "󰦨";
+            Enum = "󰦨";
+            EnumMember = "󰦨";
+
+            Keyword = "󰻾";
+            Constant = "󰏿";
+
+            Snippet = "󱄽";
+            Color = "󰏘";
+            File = "󰈔";
+            Reference = "󰬲";
+            Folder = "󰉋";
+            Event = "󱐋";
+            Operator = "󰪚";
+            TypeParameter = "󰬛";
           };
         };
       };
     };
+    # blink-cmp-copilot.enable = true;
   };
 }
