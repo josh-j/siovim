@@ -10,20 +10,22 @@
     colorschemes = {
       base16 = {
         enable = true;
-        # colorscheme = "mountain";
+        colorscheme = "mountain";
         # colorscheme = "base16-mountain";
-        # colorscheme = "base16-mountain";
-        colorscheme = "ashes";
+        # colorscheme = "ashes";
         setUpBar = true;
 
         settings = {
           cmp = true;
+          dapui = true;
           illuminate = true;
           indentblankline = true;
+          notify = true;
           lsp_semantic = true;
           mini_completion = true;
           telescope = true;
-          telescope_borders = false;
+          telescope_borders = true;
+          ts_rainbow = true;
         };
       };
     };
