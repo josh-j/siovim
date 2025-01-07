@@ -27,10 +27,10 @@
       };
 
       lightbulb = {
-        enable = true;
+        enable = false; # buggy
         sign = true;
-        debounce = 10;
-        # sign_priority = 40;
+        debounce = 250;
+        signPriority = 40;
       };
 
       rename.keys = {

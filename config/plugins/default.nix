@@ -2,6 +2,7 @@
   imports = [
     # ./autopairs.nix
     # ./bacon.nix
+    ./better-escape.nix
     ./colorizer.nix
     # ./comment.nix
     # ./crates.nix

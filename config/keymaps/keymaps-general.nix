@@ -13,7 +13,14 @@
         silent = true;
       };
     }
-
+    # {
+    #   mode = "i";  # Insert mode
+    #   key = "jk";
+    #   action = "<Esc>";
+    #   options = {
+    #     silent = true;
+    #   };
+    # }
     {
       action = ":bnext<cr>";
       key = "<C-]>";

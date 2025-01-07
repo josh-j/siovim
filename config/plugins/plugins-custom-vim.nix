@@ -10,33 +10,33 @@
     };
     meta.homepage = "https://github.com/TheLeoP/powershell.nvim";
   };
-  modicator-nvim = pkgs.vimUtils.buildVimPlugin {
-    pname = "modicator";
-    version = "2024-10-21";
-    src = pkgs.fetchFromGitHub {
-      owner = "mawkler";
-      repo = "modicator.nvim";
-      rev = "e349636d905e03305f1eda9c081e63560598f118";
-      hash = "sha256-mmO0IYe02tYXm2cT0PT6u5Aa+3GDCidQ8YW75oXOPwQ=";
-    };
-  };
+  # modicator-nvim = pkgs.vimUtils.buildVimPlugin {
+  #   pname = "modicator";
+  #   version = "2024-10-21";
+  #   src = pkgs.fetchFromGitHub {
+  #     owner = "mawkler";
+  #     repo = "modicator.nvim";
+  #     rev = "e349636d905e03305f1eda9c081e63560598f118";
+  #     hash = "sha256-mmO0IYe02tYXm2cT0PT6u5Aa+3GDCidQ8YW75oXOPwQ=";
+  #   };
+  # };
 in {
   extraPlugins = [
     {
       plugin = powershell-nvim;
       config = "lua require('powershell').setup({ bundle_path = '/Users/joshj/Source/PowerShellEditorServices' })";
     }
-    {
-      plugin = modicator-nvim;
-      config = ''
-        lua require('modicator').setup({
-          show_warnings = false,
-          highlights = { use_cursorline_background = true },
-          integration = {
-            lualine = false
-          }
-        })
-      '';
-    }
+    # {
+    #   plugin = modicator-nvim;
+    #   config = ''
+    #     lua require('modicator').setup({
+    #       show_warnings = false,
+    #       highlights = { use_cursorline_background = true },
+    #       integration = {
+    #         lualine = false
+    #       }
+    #     })
+    #   '';
+    # }
   ];
 }
