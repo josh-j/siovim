@@ -13,32 +13,11 @@
         silent = true;
       };
     }
-    # {
-    #   mode = "i";  # Insert mode
-    #   key = "jk";
-    #   action = "<Esc>";
-    #   options = {
-    #     silent = true;
-    #   };
-    # }
     {
       action = ":bnext<cr>";
       key = "<C-]>";
       mode = "n";
     }
-
-    # {
-    #   action = "o<Esc>";
-    #   key = "o";
-    #   mode = "n";
-    # }
-    #
-    # {
-    #   action = "O<Esc>";
-    #   key = "O";
-    #   mode = "n";
-    # }
-
     # Terminal escape back to nvim
     {
       action = "<C-\\><C-n>";

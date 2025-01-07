@@ -15,14 +15,22 @@
         cursorword = {
           delay = 0;
         };
-
-        icons = {};
-
-        # Show indent lines
-        indentscope = {
-          symbol = "│";
-          draw.delay = 0;
+        icons = {
+          style = "glpyh";
         };
+
+        indentscope = {
+          options = {
+            try_as_border = true;
+            border = "both";
+          };
+          symbol = "¦";
+        };
+        # # Show indent lines
+        # indentscope = {
+        #   symbol = "│";
+        #   draw.delay = 0;
+        # };
       };
     };
 

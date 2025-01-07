@@ -16,6 +16,6 @@
     # ./telescope2.nix
     ./telescope.nix
     # ./toggleterm.nix
-    # ./undotree.nix
+    ./undotree.nix
   ];
 }

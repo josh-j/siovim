@@ -30,13 +30,13 @@
       pattern = "TelescopePrompt";
       command = "inoremap <buffer><silent> <ESC> <ESC>:close!<CR>";
     }
-    # Highlight yank text
-    {
-      event = "TextYankPost";
-      pattern = "*";
-      command = "lua vim.highlight.on_yank{timeout=500}";
-    }
-
+    # # Highlight yank text
+    # {
+    #   event = "TextYankPost";
+    #   pattern = "*";
+    #   command = "lua vim.highlight.on_yank{timeout=500}";
+    # }
+    #
     # Close on 'q'
     {
       event = ["FileType"];
