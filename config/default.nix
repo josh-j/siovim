@@ -7,6 +7,7 @@
     ./debug
     ./git
     ./keymaps
+    ./lang
     ./lsp
     ./plugins
     ./themes

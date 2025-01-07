@@ -30,7 +30,7 @@
         enable = true;
         sign = true;
         debounce = 10;
-        sign_priority = 40;
+        # sign_priority = 40;
       };
 
       rename.keys = {

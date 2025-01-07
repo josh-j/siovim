@@ -1,11 +1,12 @@
 {
   imports = [
-    ./bufferline.nix
+    # ./bufferline.nix
     ./indent-blankline.nix
-    ./lualine.nix
+    # ./lualine.nix
+    ./lualine2.nix
     # ./flash.nix
     ./mini.nix
-    # ./oil.nix
+    ./oil.nix
     # ./specs.nix
     # ./precognition.nix
     ./snacks.nix

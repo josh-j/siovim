@@ -1,4 +1,9 @@
-{pkgs, ...}: {
+{
+  inputs,
+  system,
+  pkgs,
+  ...
+}: {
   plugins = {
     lsp = {
       enable = pkgs.lib.mkDefault true;
@@ -25,6 +30,8 @@
         solargraph.enable = pkgs.lib.mkDefault true;
         yamlls.enable = pkgs.lib.mkDefault true;
         taplo.enable = pkgs.lib.mkDefault true;
+        # powershell_es.enable = true;
+        # powershell_es.package = inputs.fuyuNoNur.packages.${system}.powershell_es;
       };
     };
 
