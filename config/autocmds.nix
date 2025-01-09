@@ -1,5 +1,6 @@
 {
   autoCmd = [
+    # Disable endless comment on enter
     {
       event = ["BufWinEnter"];
       callback = {
@@ -10,6 +11,7 @@
         '';
       };
     }
+    #Disable treesitter
     {
       event = ["FileType"];
       pattern = [
@@ -30,13 +32,13 @@
       pattern = "TelescopePrompt";
       command = "inoremap <buffer><silent> <ESC> <ESC>:close!<CR>";
     }
-    # # Highlight yank text
-    # {
-    #   event = "TextYankPost";
-    #   pattern = "*";
-    #   command = "lua vim.highlight.on_yank{timeout=500}";
-    # }
-    #
+    # Highlight yank text
+    {
+      event = "TextYankPost";
+      pattern = "*";
+      command = "lua vim.highlight.on_yank{timeout=500}";
+    }
+
     # Close on 'q'
     {
       event = ["FileType"];
@@ -68,6 +70,9 @@
         '';
       };
     }
+
+
+    # Auto-close command-line window
     {
       event = ["CmdWinEnter"];
       callback = {
@@ -78,6 +83,7 @@
         '';
       };
     }
+    # Equalize window sizes on vim resize
     {
       event = ["VimResized"];
       callback = {

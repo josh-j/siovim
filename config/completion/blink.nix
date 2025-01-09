@@ -7,10 +7,13 @@
         completion = {
           documentation = {
             auto_show = true;
-            auto_show_delay_ms = 0;
+            auto_show_delay_ms = 150;
           };
           list = {
-            selection = "preselect";
+            selection = {
+              auto_insert = true;
+              preselect = true;
+            };
           };
           menu = {
             draw = {
@@ -52,29 +55,8 @@
             "path"
             "snippets"
             "buffer"
-            # "copilot"
           ];
           cmdline.__raw = "{}";
-          providers = {
-            # copilot = {
-            #   name = "copilot";
-            #   module = "blink-cmp-copilot";
-            #   transform_items.__raw = # lua
-            #     ''
-            #       function(_, items)
-            #         local CompletionItemKind = require("blink.cmp.types").CompletionItemKind
-            #         local kind_idx = #CompletionItemKind + 1
-            #         CompletionItemKind[kind_idx] = "Copilot"
-            #         for _, item in ipairs(items) do
-            #           item.kind = kind_idx
-            #         end
-            #         return items
-            #       end
-            #     '';
-            #   score_offset = 100;
-            #   async = true;
-            # };
-          };
         };
         appearance = {
           kind_icons = {
@@ -113,6 +95,5 @@
         };
       };
     };
-    # blink-cmp-copilot.enable = true;
   };
 }

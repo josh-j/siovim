@@ -1,18 +1,7 @@
 {
   config = {
-    # extraConfigLuaPre = ''
-    #   vim.fn.sign_define("diagnosticsignerror", { text = " ", texthl = "diagnosticerror", linehl = "", numhl = "" })
-    #   vim.fn.sign_define("diagnosticsignwarn", { text = " ", texthl = "diagnosticwarn", linehl = "", numhl = "" })
-    #   vim.fn.sign_define("diagnosticsignhint", { text = "󰌵", texthl = "diagnostichint", linehl = "", numhl = "" })
-    #   vim.fn.sign_define("diagnosticsigninfo", { text = " ", texthl = "diagnosticinfo", linehl = "", numhl = "" })
-    # '';
-
-    # extraConfigLuaPost = ''
-    #   vim.cmd('TransparentEnable')
-    # '';
-    # feature that enhances the way Neovim loads and executes Lua modules,
-    # offering improved performance and flexibility.
     luaLoader.enable = true;
+  
     performance = {
       byteCompileLua = {
         enable = true;

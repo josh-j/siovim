@@ -4,6 +4,20 @@
   pkgs,
   ...
 }: {
+  extraConfigLua = ''
+      vim.api.nvim_create_autocmd("LspAttach", {
+        callback = function(args)
+          local bufnr = args.buf
+          require('lsp_signature').on_attach({}, bufnr)
+        end,
+      })
+      vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(
+        vim.lsp.handlers.signature_help, {
+          silent = true,
+        }
+      )
+    '';
+
   plugins = {
     lsp = {
       enable = pkgs.lib.mkDefault true;
@@ -38,6 +52,7 @@
     lint.enable = pkgs.lib.mkDefault true;
     lsp-format.enable = pkgs.lib.mkDefault true;
     lsp-signature.enable = pkgs.lib.mkDefault true;
+
   };
 
   keymaps = [

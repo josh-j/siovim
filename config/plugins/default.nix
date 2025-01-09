@@ -1,27 +1,14 @@
 {
   imports = [
-    # ./autopairs.nix
-    # ./bacon.nix
+    ./autopairs.nix
     ./better-escape.nix
     ./colorizer.nix
     ./comment.nix
-    # ./crates.nix
-    # ./dressing.nix
-    # ./illuminate.nix
-    # ./lastplace.nix
-    # ./lazy.nix
-    # ./marks.nix
-    # ./navic.nix
-    # ./neoscroll.nix
-    # ./nvim-tree.nix
-    # ./persistence.nix
-    # ./project-nvim.nix
-    # ./rustaceanvim.nix
-    # ./sleuth.nix
+    ./marks.nix
+    ./project-nvim.nix
     ./todo-comments.nix
     ./transparent.nix
-    # ./trim.nix
-    # ./vim-matchup.nix
+    ./vim-matchup.nix
 
     ./plugins-extra-vim.nix
     ./plugins-custom-vim.nix

@@ -1,130 +1,142 @@
 { icons, ... }:
+let
+  separators = {
+    left = "";
+    right = "";
+  };
+in
 {
   plugins.lualine = {
     enable = true;
-    settings = {
-      options = {
-        always_divide_middle = true;
-        ignore_focus = [ "neo-tree" ];
-        globalstatus = true; # have a single statusline at bottom of neovim instead of one for every window
-        disabled_filetypes.statusline = [
-          "dashboard"
-          "alpha"
-        ];
-        section_separators = {
-          left = "";
-          right = "";
+    settings.options = {
+      theme =
+        let
+          transparent = {
+            a.fg = "none";
+            c.bg = "none";
+          };
+        in
+        {
+          normal = transparent;
+          insert = transparent;
+          visual = transparent;
+          replace = transparent;
+          command = transparent;
+          inactive = transparent;
         };
-      };
-      extensions = [ "fzf" ];
-      sections = {
-        lualine_a = [ "mode" ];
-        lualine_b = [ "branch" ];
-        lualine_y = [
-          "progress"
-          {
-            separator = "";
-          }
-          "location"
-          {
-            padding = {
-              left = 0;
-              right = 1;
-            };
-          }
-        ];
-        lualine_z = [ ''"${icons.ui.Time}" .. os.date("%R")'' ];
-      };
+      always_divide_middle = true;
+      globalstatus = true;
+      icons_enable = true;
+      component_separators = separators;
+      section_separators = separators;
+      disabled_filetypes = [ "Outline" "neo-tree" "dashboard" "snacks_dashboard" "snacks_terminal" ];
     };
   };
-  extraConfigLua = ''
-      local ui = {}
 
-      function ui.fg(name)
-        local hl = vim.api.nvim_get_hl and vim.api.nvim_get_hl(0, { name = name }) or vim.api.nvim_get_hl_by_name(name, true)
-        local fg = hl and (hl.fg or hl.foreground)
-        return fg and { fg = string.format("#%06x", fg) } or nil
-      end
-
-      ---@param opts? {relative: "cwd"|"root", modified_hl: string?}
-      function ui.pretty_path(opts)
-        opts = vim.tbl_extend("force", {
-          relative = "cwd",
-          modified_hl = "Constant",
-        }, opts or {})
-
-        return function(self)
-          local path = vim.fn.expand("%:p") --[[@as string]]
-
-          if path == "" then
-            return ""
-          end
-
-          local bufname = vim.fn.bufname(vim.fn.bufnr())
-          local sep = package.config:sub(1, 1)
-
-          local root = (opts.relative == "root") and vim.fn.getcwd() or vim.fn.fnamemodify(bufname, ":h")
-          local cwd = vim.fn.getcwd()
-
-          path = (opts.relative == "cwd" and path:find(cwd, 1, true) == 1) and path:sub(#cwd + 2) or path:sub(#root + 2)
-
-          local parts = vim.split(path, "[\\/]")
-          if #parts > 3 then
-            parts = { parts[1], "…", parts[#parts - 1], parts[#parts] }
-          end
-
-          if opts.modified_hl and vim.bo.modified then
-            local modified_hl_fg = ui.fg(opts.modified_hl)
-            if modified_hl_fg then
-              parts[#parts] = string.format("%%#%s#%s%%*", opts.modified_hl, parts[#parts])
-            end
-          end
-
-          return table.concat(parts, sep)
+  extraConfigLua = # lua
+    ''
+      local components = {}
+      local function diff_source()
+        local gitsigns = vim.b.gitsigns_status_dict
+        if vim.b.gitsigns_status_dict then
+          return {
+            added = gitsigns.added,
+            modified = gitsigns.changed,
+            removed = gitsigns.removed,
+          }
         end
       end
 
-      require("lualine").setup({
-          sections = {
-            lualine_c = {
-                {
-                  "diagnostics",
-                  symbols = {
-                    error = "${icons.diagnostics.Error}",
-                    warn  = "${icons.diagnostics.Warning}",
-                    hint  = "${icons.diagnostics.Hint}",
-                    info  = "${icons.diagnostics.BoldInformation}",
-                  },
-                },
-                { "filetype", icon_only = true, separator = "", padding = { left = 1, right = 0 } },
-                { ui.pretty_path() },
-              },
-            lualine_x = {
-          {
-            function() return require("noice").api.status.command.get() end,
-            cond = function() return package.loaded["noice"] and require("noice").api.status.command.has() end,
-            color = ui.fg("Statement"),
-          },
-          {
-            function() return require("noice").api.status.mode.get() end,
-            cond = function() return package.loaded["noice"] and require("noice").api.status.mode.has() end,
-            color = ui.fg("Constant"),
-          },
-          {
-            function() return "${icons.diagnostics.Debug}" .. require("dap").status() end,
-            cond = function () return package.loaded["dap"] and require("dap").status() ~= "" end,
-            color = ui.fg("Debug"),
-          },
-          {
-          "diff",
-          symbols = {
-            added = "${icons.git.LineAdded}",
-            modified = "${icons.git.LineModified}",
-            removed= "${icons.git.LineRemoved}",
-            },
-          },
-        }
+      components.diff = {
+        "diff",
+        source = diff_source,
+        symbols = {
+          added = "${icons.git.LineAdded}" .. " ",
+          modified = "${icons.git.LineModified}" .. " ",
+          removed = "${icons.git.LineRemoved}" .. " ",
+        },
       }
-    })
-  '';
+      components.branch = {
+        "b:gitsigns_head",
+        icon = "${icons.git.Branch}",
+        color = { gui = "bold" },
+      }
+      components.diff = {
+        "diff",
+        source = diff_source,
+        symbols = {
+          added = "${icons.git.LineAdded}" .. " ",
+          modified = "${icons.git.LineModified}" .. " ",
+          removed = "${icons.git.LineRemoved}" .. " ",
+        },
+      }
+      components.diagnostics = {
+        "diagnostics",
+        sources = { "nvim_diagnostic" },
+        symbols = {
+          error = "${icons.diagnostics.BoldError}" .. " ",
+          warn = "${icons.diagnostics.BoldWarning}" .. " ",
+          info = "${icons.diagnostics.BoldInformation}" .. " ",
+          hint = "${icons.diagnostics.BoldHint}" .. " ",
+        },
+      }
+      components.indicator = function()
+        local noice = require("noice")
+        return {
+          noice.api.statusline.mode.get,
+          cond = noice.api.statusline.mode.has,
+          color = { fg = "#ff9e64" },
+        }
+      end
+      -- components.location = { "location", color = { fg = "#000000" }, }
+      components.filetype = { "filetype", cond = nil, padding = { left = 1, right = 1 } }
+      components.fileformat = { "fileformat", cond = nil, padding = { left = 1, right = 1 }, color = "SLGreen" }
+      components.lsp = {
+        function()
+          local clients = vim.lsp.get_active_clients()
+          local lsp_names = {}
+          if next(clients) == nil then
+            return "Ls Inactive"
+          end
+          for _, client in ipairs(clients) do
+            if client.name ~= "copilot" and client.name ~= "null-ls" and client.name ~= "typos_lsp" then
+              local name = client.name:gsub("%[%d+%]", "") -- makes otter-ls[number] -> otter-ls
+              table.insert(lsp_names, name)
+            end
+          end
+
+          local formatters = require("conform").list_formatters()
+          local con_names = {}
+
+          for _, formatter in ipairs(formatters) do
+            local name = formatter.name
+            if formatter.available and (name ~= "squeeze_blanks" and name ~= "trim_whitespace" and name ~= "trim_newlines") then
+              table.insert(con_names, formatter.name)
+            end
+          end
+          local names = {}
+          vim.list_extend(names, lsp_names)
+          vim.list_extend(names, con_names)
+          return "[" .. table.concat(vim.fn.uniq(names), ", ") .. "]"
+        end
+      };
+
+
+      local sections = {
+        lualine_a = { components.mode },
+        lualine_b = { components.fileformat, "encoding" },
+        lualine_c = { components.branch, components.diff, components.diagnostics },
+        lualine_x = {
+          components.indicator(),
+          components.lsp,
+          components.filetype,
+        },
+        lualine_y = { "progress" },
+      }
+
+      local lualine = require("lualine")
+      local config = lualine.get_config()
+      config.sections = sections
+      require("lualine").setup(config)
+    '';
 }
