@@ -1,6 +1,6 @@
 {
   imports = [
-    ./autopairs.nix
+    # ./autopairs.nix
     ./better-escape.nix
     ./colorizer.nix
     ./comment.nix

@@ -8,7 +8,12 @@
           ghost_text.enabled = true;
           documentation = {
             auto_show = true;
-            auto_show_delay_ms = 150;
+            auto_show_delay_ms = 0;
+          };
+          accept = {
+            auto_brackets = {
+              blocked_filetypes = [ "ps1" ];
+            };
           };
           list = {
             selection = {

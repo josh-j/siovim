@@ -1,6 +1,6 @@
 {
   imports = [
-    ./blink-compat.nix
+    # ./blink-compat.nix
     ./blink.nix
   ];
 }
