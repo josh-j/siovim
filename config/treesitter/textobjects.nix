@@ -5,14 +5,19 @@
       enable = pkgs.lib.mkDefault true;
       lookahead = pkgs.lib.mkDefault true;
       keymaps = {
-        "af" = {query = "@function.outer";};
-        "if" = {query = "@function.inner";};
-        "ao" = {query = "@class.outer";};
-        "io" = {query = "@class.inner";};
-        "ac" = {query = "@conditional.outer";};
-        "ic" = {query = "@conditional.inner";};
-        "al" = {query = "@loop.outer";};
-        "il" = {query = "@loop.inner";};
+        "aa" = "@parameter.outer";
+        "ac" = "@conditional.outer";
+        "af" = "@function.outer";
+        "ai" = "@conditional.outer";
+        "al" = "@loop.outer";
+        "ao" = "@class.outer";
+        "at" = "@comment.outer";
+        "ia" = "@parameter.inner";
+        "ic" = "@conditional.inner";
+        "if" = "@function.inner";
+        "ii" = "@conditional.inner";
+        "il" = "@loop.inner";
+        "io" = "@class.inner";
       };
     };
     swap = {

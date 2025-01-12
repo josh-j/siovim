@@ -31,6 +31,9 @@
       cmdheight = 2; # more space in the neovim command line for displaying messages
       showmode = false; # Dont show the editor mode in status line
 
+    # display statusline if there are at least two windows
+      laststatus = 1;
+
       # Enable relative line numbers
       number = true;
       relativenumber = true;

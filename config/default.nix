@@ -10,12 +10,13 @@
     ./lang
     ./lsp
     ./plugins
-    ./themes
     ./treesitter
     ./ui
     ./autocmds.nix
     ./extra.nix
     ./options.nix
+
+    # Load last
+    ./themes
   ];
-  colorschemes.enable = lib.mkDefault true;
 }

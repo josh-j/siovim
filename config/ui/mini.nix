@@ -19,9 +19,9 @@
           # style = "glpyh";
         };
 
-        notify = {
-
-        };
+        # notify = {
+        #
+        # };
 
         indentscope = {
           options = {
@@ -33,7 +33,5 @@
         };
       };
     };
-
-    ts-context-commentstring.enable = true;
   };
 }

@@ -5,13 +5,14 @@
       settings = {
         keymap.preset = "enter";
         completion = {
+          ghost_text.enabled = true;
           documentation = {
             auto_show = true;
             auto_show_delay_ms = 150;
           };
           list = {
             selection = {
-              auto_insert = true;
+              auto_insert = false;
               preselect = true;
             };
           };
@@ -20,7 +21,6 @@
               gap = 2;
               treesitter = [
                 "lsp"
-                # "copilot"
               ];
               columns = [
                 {
@@ -50,48 +50,8 @@
           };
         };
         sources = {
-          default = [
-            "lsp"
-            "path"
-            "snippets"
-            "buffer"
-          ];
+          # don't intefer with telescope
           cmdline.__raw = "{}";
-        };
-        appearance = {
-          kind_icons = {
-            Copilot = "";
-            Text = "󰉿";
-            Method = "󰊕";
-            Function = "󰊕";
-            Constructor = "󰒓";
-
-            Field = "󰜢";
-            Variable = "󰆦";
-            Property = "󰖷";
-
-            Class = "󱡠";
-            Interface = "󱡠";
-            Struct = "󱡠";
-            Module = "󰅩";
-
-            Unit = "󰪚";
-            Value = "󰦨";
-            Enum = "󰦨";
-            EnumMember = "󰦨";
-
-            Keyword = "󰻾";
-            Constant = "󰏿";
-
-            Snippet = "󱄽";
-            Color = "󰏘";
-            File = "󰈔";
-            Reference = "󰬲";
-            Folder = "󰉋";
-            Event = "󱐋";
-            Operator = "󰪚";
-            TypeParameter = "󰬛";
-          };
         };
       };
     };

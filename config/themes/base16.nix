@@ -1,61 +1,50 @@
-{
-  lib,
-    pkgs,
-    config,
-    ...
-}: {
-  options = {
-    base16.enable = lib.mkEnableOption "Enable base16 module";
-  };
-  config = lib.mkIf config.base16.enable {
+{pkgs, ...}: {
+  colorschemes = {
+    base16 = {
+      enable = true;
+      # colorscheme = import ../../lib/colors/papercolor.nix;
+      colorscheme = import ../../lib/colors/git-muted-dark.nix;
+      setUpBar = true;
 
-    colorschemes = {
-      base16 = {
-        enable = true;
-        colorscheme = "mountain";
-# colorscheme = "base16-mountain";
-# colorscheme = "ashes";
-        setUpBar = true;
-
-        settings = {
-          cmp = true;
-          dapui = true;
-          illuminate = true;
-          indentblankline = true;
-          notify = true;
-          lsp_semantic = true;
-          mini_completion = true;
-          telescope = true;
-          telescope_borders = true;
-          ts_rainbow = true;
-        };
+      settings = {
+        cmp = true;
+        dapui = true;
+        illuminate = true;
+        indentblankline = true;
+        notify = true;
+        lsp_semantic = true;
+        mini_completion = true;
+        telescope = true;
+        telescope_borders = true;
+        ts_rainbow = true;
       };
     };
+  };
 
 
-    plugins.transparent = {
-      enable = pkgs.lib.mkDefault true;
-      settings = {
-        extraConfig = ''
-          require('transparent').clear_prefix('lualine')
-          require('transparent').clear_prefix('neogit')
-          require('transparent').clear_prefix('gitsigns')
-          require('transparent').clear_prefix('noice')
-          require('transparent').clear_prefix('markview')
-          require('transparent').clear_prefix('Telescope')
-          require('transparent').clear_prefix('BufferLine')
-          require('transparent').clear_prefix('NeoTree')
-          '';
+  plugins.transparent = {
+    enable = pkgs.lib.mkDefault true;
+    settings = {
+      extraConfig = ''
+        require('transparent').clear_prefix('lualine')
+        require('transparent').clear_prefix('neogit')
+        require('transparent').clear_prefix('gitsigns')
+        require('transparent').clear_prefix('noice')
+        require('transparent').clear_prefix('markview')
+        require('transparent').clear_prefix('Telescope')
+        require('transparent').clear_prefix('BufferLine')
+        require('transparent').clear_prefix('NeoTree')
+        '';
 
-        extra_groups = [
-          "Constant"
-            "NormalFloat"
-            "FloatBorder"
-            "EndOfBuffer"
-            "Title"
-            "WarningMsg"
-            "GitSigns"
-        ];
+      extra_groups = [
+        "Constant"
+          "NormalFloat"
+          "FloatBorder"
+          "EndOfBuffer"
+          "Title"
+          "WarningMsg"
+          "GitSigns"
+      ];
 # extra_groups = [
 #   "Constant"
 #   "NormalFloat"
@@ -129,16 +118,15 @@
 #   "TelescopeResultsNormal"
 #   "TelescopePreviewNormal"
 # ];
-        exclude_groups = [
-          "CursorLine"
-            "CursorLineNR"
-            "CursorLineSign"
-            "CursorLineFold"
-            "NeoTreeCursorLine"
-            "StatusLine"
-        ];
-      };
+      exclude_groups = [
+        "CursorLine"
+          "CursorLineNR"
+          "CursorLineSign"
+          "CursorLineFold"
+          "NeoTreeCursorLine"
+          "StatusLine"
+      ];
     };
-
   };
+
 }
