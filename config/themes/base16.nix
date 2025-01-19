@@ -18,9 +18,11 @@
         telescope_borders = true;
         ts_rainbow = true;
       };
+      luaConfig.post = ''
+        vim.api.nvim_set_hl(0, "NeoTreeWinSeparator", { fg = require('base16-colorscheme').colors.base04 })
+      '';
     };
   };
-
 
   plugins.transparent = {
     enable = pkgs.lib.mkDefault true;
