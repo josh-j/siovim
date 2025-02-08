@@ -5,14 +5,12 @@
       formatters_by_ft = {
         cpp = [ "clang-format" ];
       };
-
       formatters = {
         clang-format = {
           command = "${pkgs.clang-tools}/bin/clang-format";
         };
       };
     };
-
     lsp.servers = {
       cmake.enable = true;
       clangd = {
@@ -31,7 +29,6 @@
         ];
         onAttach.function = ''
           vim.keymap.set('n', 'gh', "<cmd>ClangdSwitchSourceHeader<cr>", { desc = "Switch Source/Header (C/C++)", buffer = bufnr })
-
           require("clangd_extensions.inlay_hints").setup_autocmd()
           require("clangd_extensions.inlay_hints").set_inlay_hints()
         '';
@@ -44,39 +41,36 @@
         };
       };
     };
-
     clangd-extensions = {
       enable = true;
-      # extraOptions = {
-      #   inlay_hints = {
-      #     inline = false;
-      #   };
-      #   codelens.enable = true;
-      # };
-      ast = {
-        roleIcons = {
-          type = "";
-          declaration = "";
-          expression = "";
-          specifier = "";
-          statement = "";
-          templateArgument = "";
+      settings = {
+        inlay_hints = {
+          inline = false;
         };
-        kindIcons = {
-          compound = "";
-          recovery = "";
-          translationUnit = "";
-          packExpansion = "";
-          templateTypeParm = "";
-          templateTemplateParm = "";
-          templateParamObject = "";
+        codelens.enable = true;
+        ast = {
+          roleIcons = {
+            type = "";
+            declaration = "";
+            expression = "";
+            specifier = "";
+            statement = "";
+            templateArgument = "";
+          };
+          kindIcons = {
+            compound = "";
+            recovery = "";
+            translationUnit = "";
+            packExpansion = "";
+            templateTypeParm = "";
+            templateTemplateParm = "";
+            templateParamObject = "";
+          };
         };
       };
     };
-
     dap = {
       adapters.executables.lldb.command = "${pkgs.lldb}/bin/lldb-vscode";
-
       configurations.cpp = [
         {
           name = "C++";
@@ -87,7 +81,7 @@
             function()
               return vim.fn.input('Executable path: ', vim.fn.getcwd() .. '/', 'file')
             end
-          '';
+            '';
         }
       ];
     };
