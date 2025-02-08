@@ -35,24 +35,24 @@
           require("clangd_extensions.inlay_hints").setup_autocmd()
           require("clangd_extensions.inlay_hints").set_inlay_hints()
         '';
-        # extraOptions = {
-        #   init_options = {
-        #     usePlaceholders = true;
-        #     completeUnimported = true;
-        #     clangdFileStatus = true;
-        #   };
-        # };
+        extraOptions = {
+          init_options = {
+            usePlaceholders = true;
+            completeUnimported = true;
+            clangdFileStatus = true;
+          };
+        };
       };
     };
 
     clangd-extensions = {
       enable = true;
-      extraOptions = {
-        inlay_hints = {
-          inline = false;
-        };
-        codelens.enable = true;
-      };
+      # extraOptions = {
+      #   inlay_hints = {
+      #     inline = false;
+      #   };
+      #   codelens.enable = true;
+      # };
       ast = {
         roleIcons = {
           type = "";
