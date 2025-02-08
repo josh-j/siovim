@@ -2,7 +2,7 @@
   plugins.notify = {
     enable = true;
     settings = {
-      # remove animations for preformance
+      # remove animations for performance
       stages = "static";
       timeout = 4000;
     };

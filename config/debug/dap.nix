@@ -29,7 +29,9 @@
 
       };
     };
+  };
 
+  plugins = {
     dap-ui = {
       enable = true;
       settings.layouts = [
@@ -75,8 +77,7 @@
     };
 
     dap-virtual-text.enable = true;
-      };
-    };
+  };
 
     which-key.settings.spec = [
       {
