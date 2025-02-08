@@ -27,10 +27,12 @@
         };
       };
 
-      extensions = {
-        dap-ui = {
-          enable = true;
-          layouts = [
+      };
+    };
+
+    dap-ui = {
+      enable = true;
+      settings.layouts = [
             {
               elements = [
                 {
@@ -70,7 +72,9 @@
           ];
         };
 
-        dap-virtual-text.enable = true;
+    };
+
+    dap-virtual-text.enable = true;
       };
     };
 
