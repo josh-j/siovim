@@ -1,16 +1,16 @@
 {
   lib,
-  config,
   ...
-}: {
-  options = {
-    oxocarbon.enable = lib.mkEnableOption "Enable oxocarbon module";
-  };
-  config = lib.mkIf config.oxocarbon.enable {
-    colorschemes = {
-      oxocarbon = {
-        enable = true;
-      };
-    };
+}:
+lib.nixvim.plugins.mkVimPlugin {
+  name = "oxocarbon";
+  isColorscheme = true;
+  packPathName = "oxocarbon.nvim";
+  package = "oxocarbon-nvim";
+
+  maintainers = [ lib.maintainers.GaetanLepage ];
+
+  extraConfig = {
+    opts.termguicolors = lib.mkDefault true;
   };
 }
