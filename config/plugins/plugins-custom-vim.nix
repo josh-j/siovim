@@ -21,6 +21,16 @@
       hash = "sha256-ShIK8ROowT1yFHgSIVHUFnnQOEMr3YPIqw4ixzR8w8M=";
     };
   };
+
+  oxocarbon = pkgs.vimUtils.buildVimPlugin {
+    pname = "oxocarbon";
+    version = "2024-02-02";
+    src = pkgs.fetchgit {
+      url = "https://github.com/nyoom-engineering/oxocarbon.nvim";
+      rev = "c5846d10cbe4131cc5e32c6d00beaf59cb60f6a2";
+      sha256 = "++JALLPklok9VY2ChOddTYDvDNVadmCeB98jCAJYCZ0=";
+    };
+  };
 in {
   extraPlugins = [
     {
@@ -30,6 +40,9 @@ in {
     {
       plugin = modes-nvim;
       config = "lua require('modes').setup({colors = {copy = '#f5c359',delete = '#c75c6a',insert = '#415c63',visual = '#64488a'},line_opacity = 0.75,set_cursor = true,set_cursorline = true,set_number = true,ignore_filetypes = {'NvimTree', 'TelescopePrompt'}})";
+    }
+    {
+      plugin = oxocarbon;
     }
   ];
 }

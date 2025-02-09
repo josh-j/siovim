@@ -4,7 +4,7 @@
     # ./catppuccin.nix
     # ./gruvbox.nix
     # ./onedark.nix
-    ./oxocarbon.nix
+    # ./oxocarbon.nix
     # ./rose-pine.nix
   ];
 }
