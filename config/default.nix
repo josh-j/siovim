@@ -4,7 +4,7 @@
   imports = [
     ./ai
     ./completion
-    ./debug
+    #./debug
     ./git
     ./keymaps
     ./lang
