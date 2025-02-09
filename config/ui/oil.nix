@@ -11,20 +11,20 @@
         "<C-v>" = "actions.select_vsplit";
       };
       columns = ["icon"];
-      float = {
-        border = "rounded";
-        max_height = 45;
-        max_width = 80;
-        preview_split = "above";
-        override = ''
-          function(conf)
-             local opts = {
-               zindex = 80,
-             }
-             return vim.tbl_deep_extend("force", conf, opts)
-          end
-        '';
-      };
+      # float = {
+      #   border = "rounded";
+      #   max_height = 45;
+      #   max_width = 80;
+      #   preview_split = "above";
+      #   override = ''
+      #     function(conf)
+      #        local opts = {
+      #          zindex = 80,
+      #        }
+      #        return vim.tbl_deep_extend("force", conf, opts)
+      #     end
+      #   '';
+      # };
       preview = {
         border = "rounded";
         max_height = 45;

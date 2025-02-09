@@ -2,9 +2,9 @@
   # Import all your configuration modules here
 
   imports = [
-    #./ai
+    ./ai
     ./completion
-    #./debug
+    ./debug
     ./git
     ./keymaps
     ./lang
