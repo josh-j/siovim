@@ -32,3 +32,5 @@ if string.match(vim.loop.os_uname().release, 'WSL2') then
     },
   }
 end
+
+vim.cmd 'colorscheme oxocarbon'

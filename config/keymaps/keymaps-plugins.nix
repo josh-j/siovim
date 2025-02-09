@@ -164,7 +164,8 @@
 
     # Oil
     {
-      action = "<cmd>Oil --float<CR>";
+      # action = "<cmd>Oil --float<CR>";
+      action = "<cmd>Oil<CR>";
       key = "-";
       mode = "n";
       options = {
