@@ -4,7 +4,7 @@
       enable = true;
       # colorscheme = import ../../lib/colors/papercolor.nix;
       # colorscheme = import ../../lib/colors/git-muted-dark.nix;
-      colorscheme = import ../../lib/colors/git-muted-dark.nix;
+      colorscheme = import ../../lib/colors/oxocarbon.nix;
       setUpBar = true;
 
       settings = {
