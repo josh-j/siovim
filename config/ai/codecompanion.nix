@@ -1,7 +1,7 @@
 {pkgs, ...}: {
   plugins.codecompanion = {
     enable = true;
-    package = pkgs.vimPlugins.codecompanion.nvim;
+    # package = pkgs.vimPlugins.codecompanion.nvim;
     settings = {
       strategies = {
         chat.adapter = "anthropic";
