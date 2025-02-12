@@ -1,39 +1,16 @@
 {pkgs, stablePkgs, ...}: {
-  extraConfigLuaPost = ''
-    ${builtins.readFile ./extra.lua}
-    -- PowerShell LSP configuration
-    require('lspconfig').powershell_es.setup {
-      bundle_path = '${pkgs.powershell-editor-services}/lib/PowerShellEditorServices',
-      cmd = {
-        '${pkgs.powershell}/bin/pwsh',
-        '-NoLogo',
-        '-Command',
-        'Import-Module ${pkgs.powershell-editor-services}/PowerShellEditorServices/Start-EditorServices.ps1'
-      },
-      settings = {
-        powershell = {
-          codeFormatting = { Preset = "Custom" },
-          scriptAnalysis = { enable = true }
-        }
-      }
-    }
-  '';
+  extraConfigLuaPost = builtins.readFile ./extra.lua;
 
   extraPackages = with pkgs; [
+    # runtime dependencies
     fd
     ripgrep
-    # powershell  # Required core component
-    powershell-editor-services
-    nodejs  # Often required for LSP clients
-
-    # PowerShell dependencies
-    icu
-    openssl
-    zlib
+    # powershell-editor-services
   ] ++ [
-    stablePkgs.lldb
-  ] ++ lib.optionals stdenv.isDarwin [
+    stablePkgs.lldb  # Use LLDB from stable
+  ] ++ pkgs.lib.optionals pkgs.stdenv.isDarwin [
+    # runtime dependencies
     gnused
-    darwin.libobjc
   ];
+
 }

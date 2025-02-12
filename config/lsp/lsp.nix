@@ -1,6 +1,6 @@
 {
-  pkgs,
-  ...
+pkgs,
+...
 }: {
   plugins = {
     lsp = {
@@ -11,6 +11,35 @@
         "gi" = "implementation";
       };
       servers = {
+        powershell-editor-services = {
+          enable = true;
+          package = pkgs.nodePackages.powershell-editor-services;
+
+          settings = {
+            powershell = {
+              scriptAnalysis.enable = true;
+
+              powerShellEditorServices = {
+                bundledModulesPath = "${pkgs.nodePackages.powershell-editor-services}/lib/node_modules/powershell-editor-services";
+                debugServicePath = "${pkgs.nodePackages.powershell-editor-services}/lib/node_modules/powershell-editor-services/PowerShellEditorServices.dll";
+                hostName = "PowerShellEditorServices";
+                languageServicePath = "${pkgs.nodePackages.powershell-editor-services}/lib/node_modules/powershell-editor-services/PowerShellEditorServices.dll";
+                powerShellExePath = "${pkgs.powershell}/bin/pwsh";
+              };
+
+              codeFormatting = {
+                enable = true;
+                autoCorrectAliases = true;
+                useCorrectCasing = true;
+                whitespaceBeforeOpenBrace = true;
+                whitespaceBeforeOpenParen = true;
+                whitespaceAroundOperator = true;
+                whitespaceAfterSeparator = true;
+              };
+            };
+          };
+        };
+
         bashls.enable = pkgs.lib.mkDefault true;
         dockerls.enable = pkgs.lib.mkDefault true;
         gopls.enable = pkgs.lib.mkDefault true;
@@ -20,7 +49,6 @@
         pyright.enable = pkgs.lib.mkDefault true;
         ts_ls.enable = pkgs.lib.mkDefault true;
         lua_ls.enable = pkgs.lib.mkDefault true;
-        powershell_es.enable = pkgs.lib.mkDefault true;
         tailwindcss.enable = pkgs.lib.mkDefault true;
         tinymist.enable = pkgs.lib.mkDefault true;
         cssls.enable = pkgs.lib.mkDefault true;
