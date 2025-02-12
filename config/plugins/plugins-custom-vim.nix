@@ -35,7 +35,7 @@ in {
   extraPlugins = [
     {
       plugin = powershell-nvim;
-      config = "lua require('powershell').setup({ bundle_path = '~/bin/PowerShellEditorServices' })";
+      config = "lua require('powershell').setup({ bundle_path = '${pkgs.powershell-editor-services}/lib/PowerShellEditorServices' })";
     }
     {
       plugin = modes-nvim;
