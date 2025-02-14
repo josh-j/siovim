@@ -1,48 +1,53 @@
-# lsp.nix
-{ pkgs, ... }:
-
 {
-  enable = true;
-  servers.typos_lsp.enable = false;
+  pkgs,
+  ...
+}: {
+  plugins = {
+    lsp = {
+      enable = pkgs.lib.mkDefault true;
+      servers.typos_lsp.enable = pkgs.lib.mkDefault false;
+      keymaps.lspBuf = {
+        "<c-k>" = "signature_help";
+        "gi" = "implementation";
+      };
+      servers = {
+        powershell_es = {
+          enable = true;
+          package = pkgs.powershell; # Correct package
+          settings = {
+            powerShellExePath = "${pkgs.powershell}/bin/pwsh"; # Path to pwsh
 
-  keymaps.lspBuf = {
-    "<c-k>" = "signature_help";
-    "gi" = "implementation";
-  };
-
-  servers = {
-    # PowerShell LSP Configuration (Manual)
-    powershell_es = {
-      enable = true;
-      package = pkgs.powershell; # Correct package
-      settings = {
-        powerShellExePath = "${pkgs.powershell}/bin/pwsh"; # Path to pwsh
-        # Other optional PowerShell settings can go here.
-        # For example, you *could* add script analysis:
-        # powershell = {
-        #   scriptAnalysis.enable = true;
-        # };
-        # But it's not strictly required for basic functionality.
+          };
+        };
+        bashls.enable = pkgs.lib.mkDefault true;
+        dockerls.enable = pkgs.lib.mkDefault true;
+        gopls.enable = pkgs.lib.mkDefault true;
+        jsonls.enable = pkgs.lib.mkDefault true;
+        marksman.enable = pkgs.lib.mkDefault true;
+        nil_ls.enable = pkgs.lib.mkDefault true;
+        pyright.enable = pkgs.lib.mkDefault true;
+        ts_ls.enable = pkgs.lib.mkDefault true;
+        lua_ls.enable = pkgs.lib.mkDefault true;
+        tailwindcss.enable = pkgs.lib.mkDefault true;
+        tinymist.enable = pkgs.lib.mkDefault true;
+        cssls.enable = pkgs.lib.mkDefault true;
+        html.enable = pkgs.lib.mkDefault true;
+        htmx.enable = pkgs.lib.mkDefault true;
+        solargraph.enable = pkgs.lib.mkDefault true;
+        yamlls.enable = pkgs.lib.mkDefault true;
+        taplo.enable = pkgs.lib.mkDefault true;
       };
     };
 
-    # Other LSP servers (as before)
-    bashls.enable = true;
-    dockerls.enable = true;
-    gopls.enable = true;
-    jsonls.enable = true;
-    marksman.enable = true;
-    nil_ls.enable = true;
-    pyright.enable = true;
-    ts_ls.enable = true;
-    lua_ls.enable = true;
-    tailwindcss.enable = true;
-    tinymist.enable = true;
-    cssls.enable = true;
-    html.enable = true;
-    htmx.enable = true;
-    solargraph.enable = true;
-    yamlls.enable = true;
-    taplo.enable = true;
+    lint.enable = pkgs.lib.mkDefault true;
   };
+
+  keymaps = [
+    {
+      mode = "n";
+      key = "<leader>cl";
+      action = "<cmd>LspInfo<cr>";
+      options.desc = "Lsp Info";
+    }
+  ];
 }
