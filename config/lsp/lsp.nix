@@ -1,45 +1,48 @@
 {
-pkgs,
-...
+  pkgs,
+  ...
 }: {
   plugins = {
     lsp = {
       enable = pkgs.lib.mkDefault true;
-      servers.typos_lsp.enable = pkgs.lib.mkDefault false;
+      servers.typos_lsp.enable = pkgs.lib.mkDefault false;  # Good practice: disable unused servers
+
       keymaps.lspBuf = {
         "<c-k>" = "signature_help";
         "gi" = "implementation";
       };
+
       servers = {
         powershell-editor-services = {
           enable = true;
-          package = pkgs.nodePackages.powershell-editor-services;
+          # Use the powershell-editor-services *from* the powershell package
+          package = pkgs.powershell;
 
           settings = {
             powershell = {
               scriptAnalysis.enable = true;
+            };
 
-              powerShellEditorServices = {
-                bundledModulesPath = "${pkgs.nodePackages.powershell-editor-services}/lib/node_modules/powershell-editor-services";
-                debugServicePath = "${pkgs.nodePackages.powershell-editor-services}/lib/node_modules/powershell-editor-services/PowerShellEditorServices.dll";
-                hostName = "PowerShellEditorServices";
-                languageServicePath = "${pkgs.nodePackages.powershell-editor-services}/lib/node_modules/powershell-editor-services/PowerShellEditorServices.dll";
-                powerShellExePath = "${pkgs.powershell}/bin/pwsh";
-              };
+            # powerShellEditorServices settings:  MUCH SIMPLER!
+            powerShellEditorServices = {
+              # No need to specify bundledModulesPath, debugServicePath, etc.
+              # It's all handled automatically when using the correct package.
+              powerShellExePath = "${pkgs.powershell}/bin/pwsh";
+            };
 
-              codeFormatting = {
-                enable = true;
-                autoCorrectAliases = true;
-                useCorrectCasing = true;
-                whitespaceBeforeOpenBrace = true;
-                whitespaceBeforeOpenParen = true;
-                whitespaceAroundOperator = true;
-                whitespaceAfterSeparator = true;
-              };
+            codeFormatting = {
+              enable = true;
+              autoCorrectAliases = true;
+              useCorrectCasing = true;
+              whitespaceBeforeOpenBrace = true;
+              whitespaceBeforeOpenParen = true;
+              whitespaceAroundOperator = true;
+              whitespaceAfterSeparator = true;
             };
           };
         };
 
+        # Other LSP servers (good and concise list!)
         bashls.enable = pkgs.lib.mkDefault true;
         dockerls.enable = pkgs.lib.mkDefault true;
         gopls.enable = pkgs.lib.mkDefault true;
@@ -60,7 +63,7 @@ pkgs,
       };
     };
 
-    lint.enable = pkgs.lib.mkDefault true;
+    lint.enable = pkgs.lib.mkDefault true; // Assuming you have a lint plugin configured elsewhere
   };
 
   keymaps = [
