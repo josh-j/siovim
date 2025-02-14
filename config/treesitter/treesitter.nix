@@ -2,7 +2,7 @@
   plugins = {
     treesitter = {
       enable = pkgs.lib.mkDefault true;
-      ensuredInstalled = [ "powershell" ];
+      # ensuredInstalled = [ "powershell" ];
       settings = {
         highlight.enable = true;
         incremental_selection.enable = true;
