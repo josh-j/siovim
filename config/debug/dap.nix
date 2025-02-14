@@ -1,7 +1,10 @@
-{
+{ pkgs, stablePkgs, lib, ... }: {
   plugins = {
     dap = {
       enable = true;
+      adapters.executables.lldb = {
+        command = lib.mkForce "${stablePkgs.lldb}/bin/lldb-vscode";
+      };
       signs = {
         dapBreakpoint = {
           text = " ";

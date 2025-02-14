@@ -5,7 +5,8 @@
     # runtime dependencies
     fd
     ripgrep
-    # powershell-editor-services
+    powershell
+    powershell-editor-services
   ] ++ [
     stablePkgs.lldb  # Use LLDB from stable
   ] ++ pkgs.lib.optionals pkgs.stdenv.isDarwin [

@@ -1,102 +1,87 @@
-# lsp.nix
-{ pkgs, lib, ... }:
-
-let
-  inherit (lib.nixvim) mkNullType; # For mkDefault and types.null
-  inherit (lib) types;
-in
 {
-  lsp = {
-    enable = true;
-    servers.typos_lsp.enable = false;
-
-    keymaps.lspBuf = {
-      "<c-k>" = "signature_help";
-      "gi" = "implementation";
-    };
-
-    servers = {
-      # PowerShell LSP Configuration
-      powershell_es = {
-        enable = true;
-        package = pkgs.powershell;  # Correct package
-
-        # Define options, mirroring the structure of your ccls example.
-        options = {
-          powerShellExePath = mkNullType types.str "${pkgs.powershell}/bin/pwsh"; # Default, but overridable
-
-          settings = types.submodule {
-            options = {
-              powershell = types.submodule {
-                options = {
-                  scriptAnalysis = {
-                    enable = mkNullType types.bool true; # Default to enabled
-                  };
-                };
-              };
-              powerShellEditorServices = types.submodule {
-                options = {
-                  powerShellExePath = mkNullType types.str "${pkgs.powershell}/bin/pwsh";
-                  # Add other powerShellEditorServices settings here as needed,
-                  # with appropriate types and defaults.  Examples:
-                  # bundledModulesPath = mkNullType types.str "";
-                  # debugServicePath = mkNullType types.str "";
-                  # languageServicePath = mkNullType types.str "";
-                  # ... more settings ...
-                };
-              };
-
-              codeFormatting = types.submodule {
-                options = {
-                  enable = mkNullType types.bool true;
-                  autoCorrectAliases = mkNullType types.bool true;
-                  useCorrectCasing = mkNullType types.bool true;
-                  whitespaceBeforeOpenBrace = mkNullType types.bool true;
-                  whitespaceBeforeOpenParen = mkNullType types.bool true;
-                  whitespaceAroundOperator = mkNullType types.bool true;
-                  whitespaceAfterSeparator = mkNullType types.bool true;
-                };
-              };
-            };
-          };
-        };
-
-        # Use 'settings' to pass the options to the Lua configuration.
-        settings = config.plugins.lsp.servers.powershell_es.options.settings; //CRUCIAL CHANGE
+  pkgs,
+  lib,
+  config,
+  ...
+}: {
+  plugins = {
+    lsp = {
+      enable = pkgs.lib.mkDefault true;
+      servers.typos_lsp.enable = pkgs.lib.mkDefault false;
+      keymaps.lspBuf = {
+        "<c-k>" = "signature_help";
+        "gi" = "implementation";
+      };
+      servers = {
+        # Other LSP servers remain the same...
+        bashls.enable = pkgs.lib.mkDefault true;
+        dockerls.enable = pkgs.lib.mkDefault true;
+        gopls.enable = pkgs.lib.mkDefault true;
+        jsonls.enable = pkgs.lib.mkDefault true;
+        marksman.enable = pkgs.lib.mkDefault true;
+        nil_ls.enable = pkgs.lib.mkDefault true;
+        pyright.enable = pkgs.lib.mkDefault true;
+        ts_ls.enable = pkgs.lib.mkDefault true;
+        lua_ls.enable = pkgs.lib.mkDefault true;
+        tailwindcss.enable = pkgs.lib.mkDefault true;
+        tinymist.enable = pkgs.lib.mkDefault true;
+        cssls.enable = pkgs.lib.mkDefault true;
+        html.enable = pkgs.lib.mkDefault true;
+        htmx.enable = pkgs.lib.mkDefault true;
+        solargraph.enable = pkgs.lib.mkDefault true;
+        yamlls.enable = pkgs.lib.mkDefault true;
+        taplo.enable = pkgs.lib.mkDefault true;
       };
 
-      # Other LSP servers (as before, no changes needed here)
-      bashls.enable = true;
-      dockerls.enable = true;
-      gopls.enable = true;
-      jsonls.enable = true;
-      marksman.enable = true;
-      nil_ls.enable = true;
-      pyright.enable = true;
-      ts_ls.enable = true;
-      lua_ls.enable = true;
-      tailwindcss.enable = true;
-      tinymist.enable = true;
-      cssls.enable = true;
-      html.enable = true;
-      # htmx.enable = true;  <-  Remove or comment out.  Handled in extraConfig if needed.
-      solargraph.enable = true;
-      yamlls.enable = true;
-      taplo.enable = true;
-    };
-
-    # Use extraConfig for servers needing specific Lua setup (like htmx)
-      extraConfig = ''
+      # Add manual setup for PowerShell LSP with Linux paths
+      postConfig = ''
         local lspconfig = require('lspconfig')
+        local tempDir = vim.fn.expand('~/.cache/nvim/powershell_es')
+        -- Create temp directory if it doesn't exist
+        vim.fn.mkdir(tempDir, 'p')
 
-        -- Example: HTMX configuration (ONLY if you use HTMX)
-        lspconfig.htmx.setup {
-          filetypes = { "html" },  -- Only activate for HTML files!
-        }
-
-        -- PowerShell Editor Services (using settings from Nix options)
-        -- No need to repeat settings here, they are passed from Nix.
-
+        lspconfig.powershell_es.setup({
+          bundle_path = "${pkgs.powershell-editor-services}/lib/powershell-editor-services",
+          cmd = {
+            "${pkgs.powershell}/bin/pwsh",
+            "-NoLogo",
+            "-NoProfile",
+            "-ExecutionPolicy",
+            "Bypass",
+            "-Command",
+            string.format(
+              "&'${pkgs.powershell-editor-services}/lib/powershell-editor-services/PowerShellEditorServices/Start-EditorServices.ps1' -HostName 'nvim' -HostProfileId 'nvim' -HostVersion '1.0.0' -SessionDetailsPath '%s/session' -LogPath '%s/log' -LogLevel 'Diagnostic' -BundledModulesPath '${pkgs.powershell-editor-services}/lib/powershell-editor-services' -Stdio -EnableConsoleRepl",
+              tempDir,
+              tempDir
+            )
+          },
+          filetypes = { "powershell", "ps1" },
+          root_dir = function() return vim.loop.cwd() end,
+          settings = {
+            powershell = {
+              scriptAnalysis = { enable = true },
+            },
+            powerShellEditorServices = {
+              debugging = {
+                createTemporaryIntegratedConsole = true,
+              },
+              bundledModules = {
+                enable = true,
+              }
+            }
+          }
+        })
       '';
+    };
+    lint.enable = pkgs.lib.mkDefault true;
   };
+
+  keymaps = [
+    {
+      mode = "n";
+      key = "<leader>cl";
+      action = "<cmd>LspInfo<cr>";
+      options.desc = "Lsp Info";
+    }
+  ];
 }
