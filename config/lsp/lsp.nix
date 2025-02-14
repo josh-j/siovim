@@ -1,53 +1,102 @@
-{
-  pkgs,
-  ...
-}: {
-  plugins = {
-    lsp = {
-      enable = pkgs.lib.mkDefault true;
-      servers.typos_lsp.enable = pkgs.lib.mkDefault false;
-      keymaps.lspBuf = {
-        "<c-k>" = "signature_help";
-        "gi" = "implementation";
-      };
-      servers = {
-        powershell_es = {
-          enable = true;
-          package = pkgs.powershell; # Correct package
-          settings = {
-            powerShellExePath = "${pkgs.powershell}/bin/pwsh"; # Path to pwsh
+# lsp.nix
+{ pkgs, lib, ... }:
 
-          };
-        };
-        bashls.enable = pkgs.lib.mkDefault true;
-        dockerls.enable = pkgs.lib.mkDefault true;
-        gopls.enable = pkgs.lib.mkDefault true;
-        jsonls.enable = pkgs.lib.mkDefault true;
-        marksman.enable = pkgs.lib.mkDefault true;
-        nil_ls.enable = pkgs.lib.mkDefault true;
-        pyright.enable = pkgs.lib.mkDefault true;
-        ts_ls.enable = pkgs.lib.mkDefault true;
-        lua_ls.enable = pkgs.lib.mkDefault true;
-        tailwindcss.enable = pkgs.lib.mkDefault true;
-        tinymist.enable = pkgs.lib.mkDefault true;
-        cssls.enable = pkgs.lib.mkDefault true;
-        html.enable = pkgs.lib.mkDefault true;
-        htmx.enable = pkgs.lib.mkDefault true;
-        solargraph.enable = pkgs.lib.mkDefault true;
-        yamlls.enable = pkgs.lib.mkDefault true;
-        taplo.enable = pkgs.lib.mkDefault true;
-      };
+let
+  inherit (lib.nixvim) mkNullType; # For mkDefault and types.null
+  inherit (lib) types;
+in
+{
+  lsp = {
+    enable = true;
+    servers.typos_lsp.enable = false;
+
+    keymaps.lspBuf = {
+      "<c-k>" = "signature_help";
+      "gi" = "implementation";
     };
 
-    lint.enable = pkgs.lib.mkDefault true;
-  };
+    servers = {
+      # PowerShell LSP Configuration
+      powershell_es = {
+        enable = true;
+        package = pkgs.powershell;  # Correct package
 
-  keymaps = [
-    {
-      mode = "n";
-      key = "<leader>cl";
-      action = "<cmd>LspInfo<cr>";
-      options.desc = "Lsp Info";
-    }
-  ];
+        # Define options, mirroring the structure of your ccls example.
+        options = {
+          powerShellExePath = mkNullType types.str "${pkgs.powershell}/bin/pwsh"; # Default, but overridable
+
+          settings = types.submodule {
+            options = {
+              powershell = types.submodule {
+                options = {
+                  scriptAnalysis = {
+                    enable = mkNullType types.bool true; # Default to enabled
+                  };
+                };
+              };
+              powerShellEditorServices = types.submodule {
+                options = {
+                  powerShellExePath = mkNullType types.str "${pkgs.powershell}/bin/pwsh";
+                  # Add other powerShellEditorServices settings here as needed,
+                  # with appropriate types and defaults.  Examples:
+                  # bundledModulesPath = mkNullType types.str "";
+                  # debugServicePath = mkNullType types.str "";
+                  # languageServicePath = mkNullType types.str "";
+                  # ... more settings ...
+                };
+              };
+
+              codeFormatting = types.submodule {
+                options = {
+                  enable = mkNullType types.bool true;
+                  autoCorrectAliases = mkNullType types.bool true;
+                  useCorrectCasing = mkNullType types.bool true;
+                  whitespaceBeforeOpenBrace = mkNullType types.bool true;
+                  whitespaceBeforeOpenParen = mkNullType types.bool true;
+                  whitespaceAroundOperator = mkNullType types.bool true;
+                  whitespaceAfterSeparator = mkNullType types.bool true;
+                };
+              };
+            };
+          };
+        };
+
+        # Use 'settings' to pass the options to the Lua configuration.
+        settings = config.plugins.lsp.servers.powershell_es.options.settings; //CRUCIAL CHANGE
+      };
+
+      # Other LSP servers (as before, no changes needed here)
+      bashls.enable = true;
+      dockerls.enable = true;
+      gopls.enable = true;
+      jsonls.enable = true;
+      marksman.enable = true;
+      nil_ls.enable = true;
+      pyright.enable = true;
+      ts_ls.enable = true;
+      lua_ls.enable = true;
+      tailwindcss.enable = true;
+      tinymist.enable = true;
+      cssls.enable = true;
+      html.enable = true;
+      # htmx.enable = true;  <-  Remove or comment out.  Handled in extraConfig if needed.
+      solargraph.enable = true;
+      yamlls.enable = true;
+      taplo.enable = true;
+    };
+
+    # Use extraConfig for servers needing specific Lua setup (like htmx)
+      extraConfig = ''
+        local lspconfig = require('lspconfig')
+
+        -- Example: HTMX configuration (ONLY if you use HTMX)
+        lspconfig.htmx.setup {
+          filetypes = { "html" },  -- Only activate for HTML files!
+        }
+
+        -- PowerShell Editor Services (using settings from Nix options)
+        -- No need to repeat settings here, they are passed from Nix.
+
+      '';
+  };
 }
