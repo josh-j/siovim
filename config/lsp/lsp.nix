@@ -4,8 +4,8 @@
 }: {
   plugins = {
     lsp = {
-      enable = pkgs.lib.mkDefault true;
-      servers.typos_lsp.enable = pkgs.lib.mkDefault false;  # Good practice: disable unused servers
+      enable = true;  # Simplified: no need for pkgs.lib.mkDefault
+      servers.typos_lsp.enable = false; # Simplified
 
       keymaps.lspBuf = {
         "<c-k>" = "signature_help";
@@ -13,57 +13,44 @@
       };
 
       servers = {
+        # Add PowerShell LSP
         powershell-editor-services = {
           enable = true;
-          # Use the powershell-editor-services *from* the powershell package
-          package = pkgs.powershell;
-
+          package = pkgs.powershell;  # Use the PowerShell package
           settings = {
             powershell = {
               scriptAnalysis.enable = true;
             };
-
-            # powerShellEditorServices settings:  MUCH SIMPLER!
             powerShellEditorServices = {
-              # No need to specify bundledModulesPath, debugServicePath, etc.
-              # It's all handled automatically when using the correct package.
               powerShellExePath = "${pkgs.powershell}/bin/pwsh";
             };
-
-            codeFormatting = {
-              enable = true;
-              autoCorrectAliases = true;
-              useCorrectCasing = true;
-              whitespaceBeforeOpenBrace = true;
-              whitespaceBeforeOpenParen = true;
-              whitespaceAroundOperator = true;
-              whitespaceAfterSeparator = true;
-            };
+            # Optional: Add more PowerShell-specific settings if desired
+            # codeFormatting = { ... };
           };
         };
 
-        # Other LSP servers (good and concise list!)
-        bashls.enable = pkgs.lib.mkDefault true;
-        dockerls.enable = pkgs.lib.mkDefault true;
-        gopls.enable = pkgs.lib.mkDefault true;
-        jsonls.enable = pkgs.lib.mkDefault true;
-        marksman.enable = pkgs.lib.mkDefault true;
-        nil_ls.enable = pkgs.lib.mkDefault true;
-        pyright.enable = pkgs.lib.mkDefault true;
-        ts_ls.enable = pkgs.lib.mkDefault true;
-        lua_ls.enable = pkgs.lib.mkDefault true;
-        tailwindcss.enable = pkgs.lib.mkDefault true;
-        tinymist.enable = pkgs.lib.mkDefault true;
-        cssls.enable = pkgs.lib.mkDefault true;
-        html.enable = pkgs.lib.mkDefault true;
-        htmx.enable = pkgs.lib.mkDefault true;
-        solargraph.enable = pkgs.lib.mkDefault true;
-        yamlls.enable = pkgs.lib.mkDefault true;
-        taplo.enable = pkgs.lib.mkDefault true;
+        # Existing LSP servers
+        bashls.enable = true;
+        dockerls.enable = true;
+        gopls.enable = true;
+        jsonls.enable = true;
+        marksman.enable = true;
+        nil_ls.enable = true;
+        pyright.enable = true;
+        ts_ls.enable = true;
+        lua_ls.enable = true;
+        tailwindcss.enable = true;
+        tinymist.enable = true;
+        cssls.enable = true;
+        html.enable = true;
+        htmx.enable = true;
+        solargraph.enable = true;
+        yamlls.enable = true;
+        taplo.enable = true;
       };
     };
 
-    lint.enable = pkgs.lib.mkDefault true; // Assuming you have a lint plugin configured elsewhere
+    lint.enable = true; # Simplified
   };
 
   keymaps = [
