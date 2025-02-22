@@ -58,15 +58,15 @@
           };
         };
         sources = {
-          cmdline = [ ];
-          providers = {
-            buffer = {
-              score_offset = -7;
-            };
-            lsp = {
-              fallbacks = [ ];
-            };
-          };
+          cmdline.raw = "{}";
+          # providers = {
+          #   buffer = {
+          #     score_offset = -7;
+          #   };
+          #   lsp = {
+          #     fallbacks = [ ];
+          #   };
+          # };
         };
         # cmdline = {
         #   # don't intefer with telescope
