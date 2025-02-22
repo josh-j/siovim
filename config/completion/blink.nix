@@ -3,21 +3,26 @@
     blink-cmp = {
       enable = true;
       luaConfig.post = ''
-      require("blink-cmp").setup({
-        cmdline = {},
-        sources = {
-          -- Remove 'buffer' if you don't want text completions, by default it's only enabled when LSP returns no items
-          default = { 'lsp', 'path', 'snippets' },
-        }
-      })
+        require('blink.cmp').setup({
+          cmdline = {
+            sources = {}  -- Empty table to disable cmdline completion
+          }
+        })
       '';
       settings = {
+        enabled.__raw = ''
+          function()
+            local win_conf = vim.api.nvim_win_get_config(0)
+            local is_floating = win_conf.relative ~= nil
+            return vim.bo.buftype ~= 'prompt' 
+              and vim.bo.buftype ~= 'nofile'
+              and not is_floating
+              and vim.b.completion ~= false
+          end
+        '';
         keymap.preset = "enter";
         completion = {
           ghost_text.enabled = true;
-          #appearance = {
-          #  highlight_ns = true;
-          #};
           documentation = {
             auto_show = true;
             auto_show_delay_ms = 0;
@@ -36,9 +41,7 @@
           menu = {
             draw = {
               gap = 2;
-              treesitter = [
-                "lsp"
-              ];
+              treesitter = [ "lsp" ];
               columns = [
                 {
                   __unkeyed-1 = "label";
@@ -57,7 +60,7 @@
                     fill = true;
                   };
                 };
-                "kind_icon" = {
+                kind_icon = {
                   width = {
                     fill = true;
                   };
@@ -66,11 +69,9 @@
             };
           };
         };
-       cmdline.__raw = "{}";
-      # cmdline = {
-        #   # don't intefer with telescope
-        #   cmdline.__raw = "{}";
-        # };
+        sources = {
+          default = [ "lsp" "path" ];
+        };
       };
     };
   };
