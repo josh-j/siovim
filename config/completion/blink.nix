@@ -6,6 +6,9 @@
         keymap.preset = "enter";
         completion = {
           ghost_text.enabled = true;
+          appearance = {
+            highlight_ns = true;
+          };
           documentation = {
             auto_show = true;
             auto_show_delay_ms = 0;
@@ -54,10 +57,10 @@
             };
           };
         };
-        sources = {
-          # don't intefer with telescope
-          cmdline.__raw = "{}";
-        };
+        # cmdline = {
+        #   # don't intefer with telescope
+        #   cmdline.__raw = "{}";
+        # };
       };
     };
   };
