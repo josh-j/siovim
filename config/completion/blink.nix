@@ -76,7 +76,7 @@
               return {}
             end
           '';          
-        }
+        };
         # cmdline = {
         #   # don't intefer with telescope
         #   cmdline.__raw = "{}";
