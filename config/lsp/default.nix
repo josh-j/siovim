@@ -1,6 +1,7 @@
 {
   imports = [
-    ./conform.nix
+    # ./conform.nix
+    ./none-ls.nix
     ./lsp.nix
     ./lspsaga.nix
     ./inc-rename.nix

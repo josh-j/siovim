@@ -28,7 +28,7 @@
     {
       # Custom fn from extra_lua.nix which works like IntelliJ
       action = "<cmd>ToggleDefinition<cr>";
-      key = ",B";
+      key = "<leader>cD";
       mode = "n";
       options = {
         noremap = true;
@@ -38,12 +38,52 @@
     }
     {
       action = "<cmd>Lspsaga peek_definition<cr>";
-      key = ",b";
+      key = "<leader>cD";
       mode = "n";
       options = {
         noremap = true;
         silent = true;
         desc = "Definition";
+      };
+    }
+    {
+      action = "<cmd>Lspsaga hover_doc<cr>";
+      key = "<leader>ch";
+      mode = "n";
+      options = {
+        noremap = true;
+        silent = true;
+        desc = "Hover doc";
+      };
+    }
+    {
+      action = "<cmd>Lspsaga finder<cr>";
+      key = "<leader>cm";
+      mode = "n";
+      options = {
+        noremap = true;
+        silent = true;
+        desc = "Method finder";
+      };
+    }
+    {
+      action = "<cmd>Lspsaga incoming_calls<cr>";
+      key = "<leader>ci";
+      mode = "n";
+      options = {
+        noremap = true;
+        silent = true;
+        desc = "Incoming calls";
+      };
+    }
+    {
+      action = "<cmd>Lspsaga outgoing_calls<cr>";
+      key = "<leader>co";
+      mode = "n";
+      options = {
+        noremap = true;
+        silent = true;
+        desc = "Outgoing calls";
       };
     }
     # Alt+Enter for code actions like IntelliJ
@@ -120,8 +160,8 @@
 
     # Terminal
     {
-      action = "<cmd>ToggleTerm<CR>";
-      key = "<C-t>";
+      action = "<cmd>Lspsaga term_toggle<CR>";
+      key = "<C-\>";
       mode = "n";
       options = {
         noremap = true;
@@ -130,8 +170,8 @@
       };
     }
     {
-      action = "<cmd>ToggleTerm<CR>";
-      key = "<C-t>";
+      action = "<cmd>Lspsaga term_toggle<CR>";
+      key = "<C-\>";
       mode = "t";
       options = {
         noremap = true;

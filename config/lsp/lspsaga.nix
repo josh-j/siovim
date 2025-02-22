@@ -10,7 +10,7 @@
       };
       symbolInWinbar = {
         enable = true; # Breadcrumbs
-        showFile = false;
+        showFile = true;
       };
 
       codeAction = {
