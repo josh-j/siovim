@@ -60,7 +60,7 @@
         extraConfigLua = ''
         local blink_cmp = require("blink-cmp")
         blink-cmp.setup({
-          cmdline = { false }
+          cmdline = false
         })
         '';
         # cmdline = {
