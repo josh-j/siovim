@@ -57,12 +57,26 @@
             };
           };
         };
-        extraConfigLua = ''
-        local blink_cmp = require("blink-cmp")
-        blink-cmp.setup({
-          cmdline = false
-        })
-        '';
+        #extraConfigLua = ''
+        #local blink_cmp = require("blink-cmp")
+        #blink-cmp.setup({
+        #  cmdline = false
+        #})
+        #'';
+        sources = {
+          cmdline.__raw = ''
+            function()
+              local type = vim.fn.getcmdtype()
+              if type == "/" or type == "?" then
+                return { "buffer" }
+              end
+              if type == ":" or type == "@" then
+                return { "cmdline", "path" }
+              end
+              return {}
+            end
+          '';          
+        }
         # cmdline = {
         #   # don't intefer with telescope
         #   cmdline.__raw = "{}";
