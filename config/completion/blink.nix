@@ -57,17 +57,12 @@
             };
           };
         };
-        sources = {
-          cmdline.raw = "{}";
-          # providers = {
-          #   buffer = {
-          #     score_offset = -7;
-          #   };
-          #   lsp = {
-          #     fallbacks = [ ];
-          #   };
-          # };
-        };
+        extraConfigLua = ''
+        local blink_cmp = require("blink-cmp")
+        blink-cmp.setup({
+          cmdline = { false }
+        })
+        '';
         # cmdline = {
         #   # don't intefer with telescope
         #   cmdline.__raw = "{}";
