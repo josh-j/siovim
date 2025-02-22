@@ -57,10 +57,10 @@
             };
           };
         };
-        cmdline = {
-          # don't intefer with telescope
-          cmdline.__raw = "{}";
-        };
+        # cmdline = {
+        #   # don't intefer with telescope
+        #   cmdline.__raw = "{}";
+        # };
       };
     };
   };
