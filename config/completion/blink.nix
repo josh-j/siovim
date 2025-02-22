@@ -2,6 +2,15 @@
   plugins = {
     blink-cmp = {
       enable = true;
+      luaConfig.post = ''
+      require("blink-cmp").setup({
+        cmdline = {},
+        sources = {
+          -- Remove 'buffer' if you don't want text completions, by default it's only enabled when LSP returns no items
+          default = { 'lsp', 'path', 'snippets' },
+        }
+      })
+      '';
       settings = {
         keymap.preset = "enter";
         completion = {
@@ -57,27 +66,8 @@
             };
           };
         };
-        #extraConfigLua = ''
-        #local blink_cmp = require("blink-cmp")
-        #blink-cmp.setup({
-        #  cmdline = false
-        #})
-        #'';
-        sources = {
-          cmdline.__raw = ''
-            function()
-              local type = vim.fn.getcmdtype()
-              if type == "/" or type == "?" then
-                return { "buffer" }
-              end
-              if type == ":" or type == "@" then
-                return { "cmdline", "path" }
-              end
-              return {}
-            end
-          '';          
-        };
-        # cmdline = {
+       cmdline.__raw = "{}";
+      # cmdline = {
         #   # don't intefer with telescope
         #   cmdline.__raw = "{}";
         # };
