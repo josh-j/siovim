@@ -2,23 +2,14 @@
   plugins = {
     blink-cmp = {
       enable = true;
-      luaConfig.post = ''
-        require('blink.cmp').setup({
-          cmdline = {
-            sources = {}  -- Empty table to disable cmdline completion
-          }
-        })
-      '';
       settings = {
         enabled.__raw = ''
           function()
-            local win_conf = vim.api.nvim_win_get_config(0)
-            local is_floating = win_conf.relative ~= nil
-            return vim.bo.buftype ~= 'prompt' 
-              and vim.bo.buftype ~= 'nofile'
-              and not is_floating
+            return vim.bo.buftype ~= "prompt"
               and vim.b.completion ~= false
-          end
+              and not vim.tbl_contains({ "lua", "markdown" }, vim.bo.filetype)
+              -- and vim.api.nvim_win_get_config(0).relative ~= ""
+           end
         '';
         keymap.preset = "enter";
         completion = {
@@ -69,8 +60,17 @@
             };
           };
         };
+
+        cmdline = {
+          enabled = false;
+        };
         sources = {
           default = [ "lsp" "path" ];
+          providers = {
+            cmdline = {
+              enabled = false;
+            };
+          };
         };
       };
     };

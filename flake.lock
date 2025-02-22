@@ -292,6 +292,7 @@
       },
       "original": {
         "owner": "nix-community",
+        "ref": "main",
         "repo": "nixvim",
         "type": "github"
       }
