@@ -7,12 +7,12 @@
           function()
             return vim.bo.buftype ~= "prompt"
               and vim.b.completion ~= false
-              and not vim.tbl_contains({ "lua", "markdown" }, vim.bo.filetype)
+              and not vim.tbl_contains({ "xlua", "markdown" }, vim.bo.filetype)
               -- and vim.api.nvim_win_get_config(0).relative ~= ""
            end
         '';
         keymap.preset = "enter";
-        fuzzy.implemenation = "lua";
+        # fuzzy.implemenation = "lua";
         completion = {
           ghost_text.enabled = true;
           documentation = {
