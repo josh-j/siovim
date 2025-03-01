@@ -37,8 +37,7 @@
     pname = "auto-dark-mode-nvim";
     version = "2025-01-25";
     src = pkgs.fetchFromGitHub {
-      repo = "auto-dark-mode.nvim";
-      owner = "f-person";
+      url = "https://github.com/f-person/auto-dark-mode.nvim";
       rev = "2ef9553e2a1d6e861bc6955d58ce5883d28a6ad";
       sha256 = "sha256-FTXakglUrqifEXjzES6M4L+rthItu5rlw6QyIOLYNOc=";
 
