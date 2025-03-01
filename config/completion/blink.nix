@@ -12,7 +12,7 @@
            end
         '';
         keymap.preset = "enter";
-        # fuzzy.implemenation = "lua";
+        fuzzy.implemenation = "lua";
         completion = {
           ghost_text.enabled = true;
           documentation = {

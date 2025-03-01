@@ -53,17 +53,17 @@ in {
       plugin = modes-nvim;
       config = "lua require('modes').setup({colors = {copy = '#f5c359',delete = '#c75c6a',insert = '#415c63',visual = '#64488a'},line_opacity = 0.75,set_cursor = true,set_cursorline = true,set_number = true,ignore_filetypes = {'NvimTree', 'TelescopePrompt'}})";
     }
-    {
-      plugin = oxocarbon;
-
-      config = ''
-        lua <<EOF
-        # vim.opt.background = 'dark'
-        vim.cmd([[colorscheme oxocarbon]])
-        vim.api.nvim_set_hl(0, "NeoTreeWinSeparator", { fg = "#232323" })
-        EOF
-      '';
-    }
+    # {
+    #   plugin = oxocarbon;
+    #
+    #   config = ''
+    #     lua <<EOF
+    #     # vim.opt.background = 'dark'
+    #     vim.cmd([[colorscheme oxocarbon]])
+    #     vim.api.nvim_set_hl(0, "NeoTreeWinSeparator", { fg = "#232323" })
+    #     EOF
+    #   '';
+    # }
     {
       plugin = auto-dark-mode;
 

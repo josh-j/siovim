@@ -5,6 +5,6 @@
     # ./gruvbox.nix
     # ./onedark.nix
     # ./oxocarbon.nix
-    # ./rose-pine.nix
+    ./rose-pine.nix
   ];
 }
