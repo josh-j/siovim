@@ -58,7 +58,7 @@ in {
 
       config = ''
         lua <<EOF
-        vim.opt.background = 'dark'
+        # vim.opt.background = 'dark'
         vim.cmd([[colorscheme oxocarbon]])
         vim.api.nvim_set_hl(0, "NeoTreeWinSeparator", { fg = "#232323" })
         EOF
