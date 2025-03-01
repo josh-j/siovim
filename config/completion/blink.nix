@@ -12,9 +12,9 @@
            end
         '';
         keymap.preset = "enter";
-        fuzzy.implemenation._raw = ''
-          "lua"
-        '';
+        fuzzy = {
+          implementation = "lua";
+        };
         completion = {
           ghost_text.enabled = true;
           documentation = {
