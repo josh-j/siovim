@@ -1,4 +1,4 @@
-{pkgs,lib, ...}: let
+{pkgs, ...}: let
   # powershell-nvim = pkgs.vimUtils.buildVimPlugin {
   #   pname = "powershell";
   #   version = "2024-08-01";
@@ -40,8 +40,7 @@
       owner = "f-person";
       repo = "auto-dark-mode.nvim";
       rev = "02ef9553e2a1d6e861bc6955d58ce5883d28a6ad";
-      # sha256 = "sha256-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA";
-      sha256 = lib.fakeSha256;
+      sha256 = "sha256-FTXakglUrqifEXjzES6M4L+rthItu5rlw6QyIOLYNOc=";
     };
   };
 in {
