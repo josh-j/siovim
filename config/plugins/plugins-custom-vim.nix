@@ -39,8 +39,8 @@
     src = pkgs.fetchFromGitHub {
       owner = "f-person";
       repo = "auto-dark-mode.nvim";
-      rev = "2ef9553e2a1d6e861bc6955d58ce5883d28a6ad";
-      sha256 = "sha256-FTXakglUrqifEXjzES6M4L+rthItu5rlw6QyIOLYNOc=";
+      rev = "02ef9553e2a1d6e861bc6955d58ce5883d28a6ad";
+      sha256 = "sha256-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA";
     };
   };
 in {
