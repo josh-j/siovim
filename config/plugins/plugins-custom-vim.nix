@@ -35,7 +35,7 @@
 
   auto-dark-mode = pkgs.vimUtils.buildVimPlugin {
     pname = "auto-dark-mode-nvim";
-    src = pkgs.fetchgit {
+    src = pkgs.fetchFromGitHub {
       repo = "auto-dark-mode.nvim";
       owner = "f-person";
       rev = "2ef9553e2a1d6e861bc6955d58ce5883d28a6ad";
