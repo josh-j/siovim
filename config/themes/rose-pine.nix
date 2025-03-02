@@ -1,7 +1,7 @@
 { lib, config, ... }:
 {
   options = {
-    rose-pine.enable = lib.mkEnableOption "Enable rose-pine module";
+    rose-pine.enable =  true;
   };
   config = lib.mkIf config.rose-pine.enable {
     colorschemes = {
@@ -11,7 +11,7 @@
           styles = {
             italic = true;
             bold = true;
-            transparency = false;
+            transparency = true;
           };
         };
       };

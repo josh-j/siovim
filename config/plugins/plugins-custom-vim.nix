@@ -22,15 +22,15 @@
     };
   };
 
-  oxocarbon = pkgs.vimUtils.buildVimPlugin {
-    pname = "oxocarbon";
-    version = "2024-02-02";
-    src = pkgs.fetchgit {
-      url = "https://github.com/nyoom-engineering/oxocarbon.nvim";
-      rev = "c5846d10cbe4131cc5e32c6d00beaf59cb60f6a2";
-      sha256 = "++JALLPklok9VY2ChOddTYDvDNVadmCeB98jCAJYCZ0=";
-    };
-  };
+  # oxocarbon = pkgs.vimUtils.buildVimPlugin {
+  #   pname = "oxocarbon";
+  #   version = "2024-02-02";
+  #   src = pkgs.fetchgit {
+  #     url = "https://github.com/nyoom-engineering/oxocarbon.nvim";
+  #     rev = "c5846d10cbe4131cc5e32c6d00beaf59cb60f6a2";
+  #     sha256 = "++JALLPklok9VY2ChOddTYDvDNVadmCeB98jCAJYCZ0=";
+  #   };
+  # };
 
 
   auto-dark-mode = pkgs.vimUtils.buildVimPlugin {

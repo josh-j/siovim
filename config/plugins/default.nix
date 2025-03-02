@@ -7,7 +7,7 @@
     ./marks.nix
     ./project-nvim.nix
     ./todo-comments.nix
-    ./transparent.nix
+    # ./transparent.nix
     ./vim-matchup.nix
 
     ./plugins-extra-vim.nix
