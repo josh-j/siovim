@@ -7,5 +7,5 @@
     # ./oxocarbon.nix
     ./rose-pine.nix
   ];
-  config.rose-pin.enable = true;
+  config.rose-pine.enable = true;
 }
