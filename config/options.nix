@@ -1,7 +1,7 @@
 {
   config = {
     luaLoader.enable = true;
-  
+
     performance = {
       byteCompileLua = {
         enable = true;
@@ -27,11 +27,11 @@
     # clipboard.providers.wl-copy.enable = true;
     opts = {
       virtualedit = "block"; # Allow cursor to move where there is no text in visual block mode
-      cursorline = true; # Highlight the line where the cursor is located
+      cursorline = false; # Highlight the line where the cursor is located
       cmdheight = 2; # more space in the neovim command line for displaying messages
-      showmode = false; # Dont show the editor mode in status line
+      showmode = true; # Dont show the editor mode in status line
 
-    # display statusline if there are at least two windows
+      # display statusline if there are at least two windows
       laststatus = 1;
 
       # Enable relative line numbers

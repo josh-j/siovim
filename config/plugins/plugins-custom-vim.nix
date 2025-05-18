@@ -10,18 +10,16 @@
   #   };
   #   meta.homepage = "https://github.com/TheLeoP/powershell.nvim";
   # };
-
-  modes-nvim = pkgs.vimUtils.buildVimPlugin {
-    pname = "modes-nvim";
-    version = "2024-12-17";
-    src = pkgs.fetchFromGitHub {
-      owner = "mvllow";
-      repo = "modes.nvim";
-      rev = "c7a4b1b383606832aab150902719bd5eb5cdb2b0";
-      hash = "sha256-ShIK8ROowT1yFHgSIVHUFnnQOEMr3YPIqw4ixzR8w8M=";
-    };
-  };
-
+  # modes-nvim = pkgs.vimUtils.buildVimPlugin {
+  #   pname = "modes-nvim";
+  #   version = "2024-12-17";
+  #   src = pkgs.fetchFromGitHub {
+  #     owner = "mvllow";
+  #     repo = "modes.nvim";
+  #     rev = "c7a4b1b383606832aab150902719bd5eb5cdb2b0";
+  #     hash = "sha256-ShIK8ROowT1yFHgSIVHUFnnQOEMr3YPIqw4ixzR8w8M=";
+  #   };
+  # };
   # oxocarbon = pkgs.vimUtils.buildVimPlugin {
   #   pname = "oxocarbon";
   #   version = "2024-02-02";
@@ -31,8 +29,6 @@
   #     sha256 = "++JALLPklok9VY2ChOddTYDvDNVadmCeB98jCAJYCZ0=";
   #   };
   # };
-
-
   auto-dark-mode = pkgs.vimUtils.buildVimPlugin {
     pname = "auto-dark-mode-nvim";
     version = "2025-01-25";
@@ -49,10 +45,10 @@ in {
     #   plugin = powershell-nvim;
     #   config = "lua require('powershell').setup({ bundle_path = '${pkgs.powershell-editor-services}/lib/PowerShellEditorServices' })";
     # }
-    {
-      plugin = modes-nvim;
-      config = "lua require('modes').setup({colors = {copy = '#f5c359',delete = '#c75c6a',insert = '#415c63',visual = '#64488a'},line_opacity = 0.55,set_cursor = true,set_cursorline = true,set_number = true,ignore_filetypes = {'NvimTree', 'TelescopePrompt'}})";
-    }
+    # {
+    #   plugin = modes-nvim;
+    #   config = "lua require('modes').setup({colors = {copy = '#f5c359',delete = '#c75c6a',insert = '#415c63',visual = '#64488a'},line_opacity = 0.55,set_cursor = true,set_cursorline = true,set_number = true,ignore_filetypes = {'NvimTree', 'TelescopePrompt'}})";
+    # }
     # {
     #   plugin = oxocarbon;
     #

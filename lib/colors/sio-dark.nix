@@ -1,7 +1,7 @@
 _: {
   base00 = "#1a1f1a"; # background
   base01 = "#504A73"; # black (used as lighter background/status bars)
-  base02 = "#9882a8"; # selectionBackground
+  base02 = "#2a2f2a"; # selectionBackground
   base03 = "#8783A3"; # brightBlack (comments, line highlight)
   base04 = "#D3D1E6"; # white (dark foreground/status bars)
   base05 = "#FFF1E8"; # foreground (default foreground/cursor)

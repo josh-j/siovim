@@ -1,39 +1,47 @@
-{ icons, ... }:
-let
+{icons, ...}: let
   separators = {
     left = "";
     right = "";
   };
-in
-{
+in {
   plugins.lualine = {
     enable = true;
     settings.options = {
-      theme =
-        let
-          transparent = {
-            a.fg = "none";
-            c.bg = "none";
+      theme = let
+        transparent = {
+          a = {
+            fg = "none";
+            bg = "none";
+            gui = "bold";
           };
-        in
-        {
-          normal = transparent;
-          insert = transparent;
-          visual = transparent;
-          replace = transparent;
-          command = transparent;
-          inactive = transparent;
+          b = {
+            fg = "none";
+            bg = "none";
+          };
+          c = {
+            fg = "none";
+            bg = "none";
+          };
         };
+      in {
+        normal = transparent;
+        insert = transparent;
+        visual = transparent;
+        replace = transparent;
+        command = transparent;
+        inactive = transparent;
+      };
       always_divide_middle = true;
       globalstatus = true;
       icons_enable = true;
       component_separators = separators;
       section_separators = separators;
-      disabled_filetypes = [ "Outline" "neo-tree" "dashboard" "snacks_dashboard" "snacks_terminal" ];
+      disabled_filetypes = ["Outline" "neo-tree" "dashboard" "snacks_dashboard" "snacks_terminal"];
     };
   };
 
-  extraConfigLua = # lua
+  extraConfigLua =
+    # lua
     ''
       local components = {}
       local function diff_source()

@@ -507,6 +507,17 @@
     }
     {
       mode = "n";
+      key = "<leader>xz";
+      action = "<Nop>";
+      options = {
+        noremap = true;
+        silent = true;
+        desc = "UI Modes";
+      };
+    }
+
+    {
+      mode = "n";
       key = "<leader>xzz";
       action = "<cmd>ZenMode<CR>";
       options = {
@@ -845,7 +856,7 @@
         "n"
         "v"
       ];
-      key = "<leader>xxd";
+      key = "<leader>X";
       action = "\"_d";
       options = {
         noremap = true;
@@ -855,6 +866,16 @@
     }
 
     # --- Telescope Pickers (Relocated & Neovim Specific - under <leader>xf or <leader>xs prefixes) ---
+    {
+      mode = "n";
+      key = "<leader>xf";
+      action = "<Nop>";
+      options = {
+        noremap = true;
+        silent = true;
+        desc = "Telescope Pickers";
+      };
+    }
     {
       mode = "n";
       key = "<leader>xfH";
@@ -873,6 +894,16 @@
         noremap = true;
         silent = true;
         desc = "Telescope Old/Recent Files";
+      };
+    }
+    {
+      mode = "n";
+      key = "<leader>xo";
+      action = "<Nop>";
+      options = {
+        noremap = true;
+        silent = true;
+        desc = "Telescope Open";
       };
     }
     {
@@ -1031,6 +1062,16 @@
         noremap = true;
         silent = true;
         desc = "Telescope Registers";
+      };
+    }
+    {
+      mode = "n";
+      key = "<leader>xu";
+      action = "<Nop>";
+      options = {
+        noremap = true;
+        silent = true;
+        desc = "Utilities";
       };
     }
     {
