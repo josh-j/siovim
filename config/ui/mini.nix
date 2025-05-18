@@ -17,22 +17,55 @@ in {
     mini = {
       enable = true;
       mockDevIcons = true;
+
       modules = {
         animate = {
           cursor.enable = false;
-          scroll.timing = timing 100;
-          resize.timing = timing 100;
+          scroll.timing = timing 50;
+          resize.timing = timing 50;
           open.enable = false;
           close.enable = false;
         };
-        basic = {
-          options = {
-            extra_ui = true;
+        base16 = {
+          palette = {
+            base00 = "#1a1f1a";
+            base01 = "#504A73";
+            base02 = "#2a2f2a";
+            base03 = "#8783A3";
+            base04 = "#D3D1E6";
+            base05 = "#FFF1E8";
+            base06 = "#EAE8FF";
+            base07 = "#EAE8FF";
+            base08 = "#EB6F92";
+            base09 = "#F6D499";
+            base0A = "#DEC097";
+            base0B = "#47A4C9";
+            base0C = "#BBB6F2";
+            base0D = "#8EBCC4";
+            base0E = "#C4A7E7";
+            base0F = "#9CCFD8";
           };
-          mappings = {
-            option_toggle_prefix = "<leader>xmt";
-          };
+          use_cterm = true;
+          plugs = {default = true;};
         };
+        #        basics = {
+        #          autocommands = {
+        #            basic = true;
+        #            relnum_in_visual_mode = true;
+        #          };
+        #          options = {
+        #            basic = true;
+        #            extra_ui = false;
+        #            win_borders = "default";
+        #          };
+        #          mappings = {
+        #            basic = true;
+        #            windows = true;
+        #            move_with_alt = true;
+        #            option_toggle_prefix = "<leader>xmt";
+        #          };
+        #          silent = false;
+        #        };
         clue = {
           window = {
             delay = 500;
@@ -131,26 +164,28 @@ in {
         };
         comment = {
           mappings = {
-            comment = "<leader>c";
-            comment_line = "<leader>c";
-            comment_visual = "<leader>c";
-            textobject = "<leader>c";
+            comment = "gc";
+            comment_line = "gcc";
+            comment_visual = "gc";
+            textobject = "gc";
           };
         };
         hipatterns = {
-          hex_color.__raw =
-            # lua
-            ''
-              -- Highlight hex color strings (`#rrggbb`) using that color
-              require('mini.hipatterns').gen_highlighter.hex_color()
-            '';
+          #highlights = {
+          #    hex_color.__raw =
+          #      # lua
+          #    ''
+          #      -- Highlight hex color strings (`#rrggbb`) using that color
+          #      require('mini.hipatterns').gen_highlighter.hex_color()
+          #    '';
+          #};
         };
         jump = {
           # Extend f, F, t, T to work on multiple lines.
         };
-        keymap = {
-          # j k
-        };
+        #        keymaps = {
+        #  # j k
+        #};
         pairs = {
         };
         move = {
@@ -164,9 +199,8 @@ in {
           # style = "glpyh";
         };
 
-        # notify = {
-        #
-        # };
+        #notify = {
+        #};
 
         indentscope = {
           options = {
@@ -181,6 +215,8 @@ in {
           # symbol = "¦";
           # symbol = "";
           #   draw.delay = 0;
+        };
+        sessions = {
         };
         surround = {
           mappings = {

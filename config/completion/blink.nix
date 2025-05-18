@@ -23,7 +23,7 @@
           };
           accept = {
             auto_brackets = {
-              blocked_filetypes = [ "ps1" ];
+              blocked_filetypes = ["ps1"];
             };
           };
           list = {
@@ -35,7 +35,7 @@
           menu = {
             draw = {
               gap = 2;
-              treesitter = [ "lsp" ];
+              treesitter = ["lsp"];
               columns = [
                 {
                   __unkeyed-1 = "label";
@@ -68,7 +68,7 @@
           enabled = false;
         };
         sources = {
-          default = [ "lsp" "path" ];
+          default = ["lsp" "path"];
           providers = {
             cmdline = {
               enabled = false;
