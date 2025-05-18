@@ -72,25 +72,25 @@
     fillchars = helpers.mkRaw "[[eob: ,fold: ,foldopen:,foldsep: ,foldclose:]]";
   };
 
-  keymaps = [
-    {
-      mode = "n";
-      key = "zR";
-      action = helpers.mkRaw "function() require('ufo').openAllFolds() end";
-      options.desc = "open all folds";
-    }
-    {
-      mode = "n";
-      key = "zM";
-      action = helpers.mkRaw "function() require('ufo').closeAllFolds() end";
-      options.desc = "close all folds";
-    }
-    {
-      mode = "n";
-      key = "zK";
-      action = helpers.mkRaw "function() local winid = require('ufo').peekFoldedLinesUnderCursor() if not winid then vim.lsp.buf.hover() end end";
-      options.desc = "Peek Folded Lines";
-    }
-  ];
+  # keymaps = [
+  #   {
+  #     mode = "n";
+  #     key = "zR";
+  #     action = helpers.mkRaw "function() require('ufo').openAllFolds() end";
+  #     options.desc = "open all folds";
+  #   }
+  #   {
+  #     mode = "n";
+  #     key = "zM";
+  #     action = helpers.mkRaw "function() require('ufo').closeAllFolds() end";
+  #     options.desc = "close all folds";
+  #   }
+  #   {
+  #     mode = "n";
+  #     key = "zK";
+  #     action = helpers.mkRaw "function() local winid = require('ufo').peekFoldedLinesUnderCursor() if not winid then vim.lsp.buf.hover() end end";
+  #     options.desc = "Peek Folded Lines";
+  #   }
+  # ];
 
 }
