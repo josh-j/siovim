@@ -9,6 +9,7 @@
       };
       formatters_by_ft = {
         # Use the "_" filetype to run formatters on filetypes that don't have other formatters configured.
+        nix = [ "alejandra" ];
         "_" = [
           "squeeze_blanks"
           "trim_whitespace"
@@ -25,19 +26,4 @@
       };
     };
   };
-
-  keymaps = [
-    {
-      mode = [
-        "n"
-        "v"
-      ];
-      key = "<leader>cf";
-      action = "<cmd>lua require('conform').format()<cr>";
-      options = {
-        silent = true;
-        desc = "Format";
-      };
-    }
-  ];
 }
