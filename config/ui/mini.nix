@@ -30,7 +30,7 @@ in {
           palette = {
             base00 = "#1a1f1a";
             base01 = "#2a2f2a";
-            base02 = "#2f342f";
+            base02 = "#2f2f2a";
             base03 = "#8783A3";
             base04 = "#D3D1E6";
             base05 = "#FFF1E8";
@@ -48,24 +48,24 @@ in {
           use_cterm = true;
           plugs = {default = true;};
         };
-        #        basics = {
-        #          autocommands = {
-        #            basic = true;
-        #            relnum_in_visual_mode = true;
-        #          };
-        #          options = {
-        #            basic = true;
-        #            extra_ui = false;
-        #            win_borders = "default";
-        #          };
-        #          mappings = {
-        #            basic = true;
-        #            windows = true;
-        #            move_with_alt = true;
-        #            option_toggle_prefix = "<leader>xmt";
-        #          };
-        #          silent = false;
-        #        };
+        basics = {
+          autocommands = {
+            basic = true;
+            relnum_in_visual_mode = true;
+          };
+          options = {
+            basic = true;
+            extra_ui = false;
+            win_borders = "default";
+          };
+          mappings = {
+            basic = true;
+            windows = true;
+            move_with_alt = true;
+            option_toggle_prefix = "<leader>xt";
+          };
+          silent = false;
+        };
         clue = {
           window = {
             delay = 500;
@@ -162,14 +162,16 @@ in {
             {__raw = "require('mini.clue').gen_clues.z()";}
           ];
         };
-        comment = {
-          mappings = {
-            comment = "gc";
-            comment_line = "gcc";
-            comment_visual = "gc";
-            textobject = "gc";
-          };
+        colors = {
         };
+        # comment = {
+
+        #     comment = "gc";
+        #     comment_line = "gcc";
+        #     comment_visual = "gc";
+        #     textobject = "gc";
+        #   };
+        # };
         hipatterns = {
           #highlights = {
           #    hex_color.__raw =

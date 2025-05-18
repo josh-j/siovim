@@ -29,16 +29,16 @@
   #     sha256 = "++JALLPklok9VY2ChOddTYDvDNVadmCeB98jCAJYCZ0=";
   #   };
   # };
-  auto-dark-mode = pkgs.vimUtils.buildVimPlugin {
-    pname = "auto-dark-mode-nvim";
-    version = "2025-01-25";
-    src = pkgs.fetchFromGitHub {
-      owner = "f-person";
-      repo = "auto-dark-mode.nvim";
-      rev = "02ef9553e2a1d6e861bc6955d58ce5883d28a6ad";
-      sha256 = "sha256-FTXakglUrqifEXjzES6M4L+rthItu5rlw6QyIOLYNOc=";
-    };
-  };
+  # auto-dark-mode = pkgs.vimUtils.buildVimPlugin {
+  #   pname = "auto-dark-mode-nvim";
+  #   version = "2025-01-25";
+  #   src = pkgs.fetchFromGitHub {
+  #     owner = "f-person";
+  #     repo = "auto-dark-mode.nvim";
+  #     rev = "02ef9553e2a1d6e861bc6955d58ce5883d28a6ad";
+  #     sha256 = "sha256-FTXakglUrqifEXjzES6M4L+rthItu5rlw6QyIOLYNOc=";
+  #   };
+  # };
 in {
   extraPlugins = [
     # {
@@ -60,16 +60,16 @@ in {
     #     EOF
     #   '';
     # }
-    {
-      plugin = auto-dark-mode;
-
-      # config = ''
-      #   lua <<EOF
-      #   vim.opt.background = 'dark'
-      #   vim.cmd([[colorscheme oxocarbon]])
-      #   vim.api.nvim_set_hl(0, "NeoTreeWinSeparator", { fg = "#232323" })
-      #   EOF
-      # '';
-    }
+    # {
+    #   plugin = auto-dark-mode;
+    #
+    #   # config = ''
+    #   #   lua <<EOF
+    #   #   vim.opt.background = 'dark'
+    #   #   vim.cmd([[colorscheme oxocarbon]])
+    #   #   vim.api.nvim_set_hl(0, "NeoTreeWinSeparator", { fg = "#232323" })
+    #   #   EOF
+    #   # '';
+    # }
   ];
 }
