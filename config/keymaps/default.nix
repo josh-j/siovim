@@ -2,6 +2,7 @@
   imports = [
     ./keymaps-general.nix
     ./keymaps-plugins.nix
-    ./whichkey.nix
+    # ./keymaps-helix.nix # Add Helix-inspired keybindings
+    # ./whichkey.nix
   ];
 }

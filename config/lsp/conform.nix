@@ -1,5 +1,8 @@
-{ pkgs, lib, ... }:
 {
+  pkgs,
+  lib,
+  ...
+}: {
   plugins.conform-nvim = {
     enable = true;
     settings = {
@@ -9,7 +12,7 @@
       };
       formatters_by_ft = {
         # Use the "_" filetype to run formatters on filetypes that don't have other formatters configured.
-        nix = [ "alejandra" ];
+        nix = ["alejandra"];
         "_" = [
           "squeeze_blanks"
           "trim_whitespace"
@@ -22,6 +25,9 @@
         };
         squeeze_blanks = {
           command = lib.getExe' pkgs.coreutils "cat";
+        };
+        alejandra = {
+          command = lib.getExe pkgs.alejandra;
         };
       };
     };

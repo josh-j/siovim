@@ -5,6 +5,7 @@
     # runtime dependencies
     fd
     ripgrep
+    fzf
     powershell
     powershell-editor-services
   ] ++ [

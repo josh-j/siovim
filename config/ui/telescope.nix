@@ -21,10 +21,10 @@
           "--smart-case"
           "--fixed-strings"
         ];
-        selection_caret = "  ";
-        entry_prefix = "  ";
-        prompt_prefix = "   ";
-        # color_devicons = true;
+        selection_caret = " ";
+        entry_prefix = " ";
+        prompt_prefix = " 󰍉  ";
+        color_devicons = true;
 
         layout_strategy = "flex";
         layout_config = {
