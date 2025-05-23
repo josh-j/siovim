@@ -1,45 +1,48 @@
-{icons, ...}: let
+{ icons, ... }:
+let
   separators = {
     left = "";
     right = "";
   };
-in {
+in
+{
   plugins.lualine = {
     enable = true;
     settings.options = {
-      theme = let
-        transparent = {
-          a = {
-            fg = "none";
-            bg = "none";
-            gui = "bold";
+      theme =
+        let
+          transparent = {
+            a = {
+              fg = "none";
+              bg = "none";
+              gui = "bold";
+            };
+            b = {
+              fg = "none";
+              bg = "none";
+            };
+            c = {
+              fg = "none";
+              bg = "none";
+            };
           };
-          b = {
-            fg = "none";
-            bg = "none";
-          };
-          c = {
-            fg = "none";
-            bg = "none";
-          };
+        in
+        {
+          normal = transparent;
+          insert = transparent;
+          visual = transparent;
+          replace = transparent;
+          command = transparent;
+          inactive = transparent;
         };
-      in {
-        normal = transparent;
-        insert = transparent;
-        visual = transparent;
-        replace = transparent;
-        command = transparent;
-        inactive = transparent;
-      };
       always_divide_middle = true;
       globalstatus = true;
       icons_enable = true;
       component_separators = separators;
       section_separators = separators;
-      disabled_filetypes = ["Outline" "neo-tree" "dashboard" "snacks_dashboard" "snacks_terminal"];
+      disabled_filetypes = [ "Outline" "neo-tree" "dashboard" "snacks_dashboard" "snacks_terminal" ];
     };
   };
-
   extraConfigLua =
     # lua
     ''
@@ -54,7 +57,6 @@ in {
           }
         end
       end
-
       components.diff = {
         "diff",
         source = diff_source,
@@ -88,6 +90,23 @@ in {
           hint = "${icons.diagnostics.BoldHint}" .. " ",
         },
       }
+      
+      -- Add navic breadcrumbs component
+      components.navic = {
+        function()
+          local navic = require("nvim-navic")
+          if navic.is_available() then
+            return navic.get_location()
+          end
+          return ""
+        end,
+        cond = function()
+          local navic = require("nvim-navic")
+          return navic.is_available()
+        end,
+        color = { fg = "#8783A3" }, -- Use your base03 color or any color you prefer
+      }
+      
       components.indicator = function()
         local noice = require("noice")
         return {
@@ -112,10 +131,8 @@ in {
               table.insert(lsp_names, name)
             end
           end
-
           local formatters = require("conform").list_formatters()
           local con_names = {}
-
           for _, formatter in ipairs(formatters) do
             local name = formatter.name
             if formatter.available and (name ~= "squeeze_blanks" and name ~= "trim_whitespace" and name ~= "trim_newlines") then
@@ -128,12 +145,15 @@ in {
           return "[" .. table.concat(vim.fn.uniq(names), ", ") .. "]"
         end
       };
-
-
       local sections = {
         lualine_a = { components.mode },
         lualine_b = { components.fileformat, "encoding" },
-        lualine_c = { components.branch, components.diff, components.diagnostics },
+        lualine_c = { 
+          components.branch, 
+          components.diff, 
+          components.diagnostics,
+          components.navic  -- Add navic breadcrumbs here
+        },
         lualine_x = {
           components.indicator(),
           components.lsp,
@@ -141,7 +161,6 @@ in {
         },
         lualine_y = { "progress" },
       }
-
       local lualine = require("lualine")
       local config = lualine.get_config()
       config.sections = sections

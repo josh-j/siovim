@@ -1,27 +1,69 @@
 let
-  timing = ms: let
-    msS = builtins.toString ms;
-  in {
-    __raw =
-      # lua
-      ''
-        -- Animate only for ${msS}ms
-        require('mini.animate').gen_timing.linear({
-          duration = ${msS},
-          unit = 'total'
-        })
-      '';
-  };
-in {
+  timing = ms:
+    let
+      msS = builtins.toString ms;
+    in
+    {
+      __raw =
+        # lua
+        ''
+          -- Animate only for ${msS}ms
+          require('mini.animate').gen_timing.linear({
+            duration = ${msS},
+            unit = 'total'
+          })
+        '';
+    };
+in
+{
   plugins = {
     mini = {
       enable = true;
       mockDevIcons = true;
+      # Add transparency functionality
+      luaConfig.post = ''
+        -- Apply transparency on colorscheme change
+        local function apply_transparency()
+          require('mini.colors').get_colorscheme()
+            :add_transparency({
+              general = true,        -- Normal, etc.
+              float = true,         -- Floating windows
+              statuscolumn = true,   -- Line numbers, signs, fold column
+              statusline = true,    -- Status line
+              tabline = false,       -- Tab line
+              winbar = true,        -- Win bar
+            })
+            :apply({ clear = false }) -- Don't clear existing highlights
+        end
 
+        -- Apply transparency immediately
+        apply_transparency()
+
+        -- Apply transparency whenever colorscheme changes
+        vim.api.nvim_create_autocmd('ColorScheme', {
+          group = vim.api.nvim_create_augroup('MiniColorsTransparency', { clear = true }),
+          callback = apply_transparency,
+        })
+
+        -- Optional: Add user command for manual transparency toggle
+        vim.api.nvim_create_user_command('ToggleTransparency', apply_transparency, {
+          desc = 'Apply transparency to current colorscheme'
+        })
+      '';
       modules = {
         animate = {
           cursor.enable = false;
-          scroll.timing = timing 50;
+          scroll.enable = false;
+          # scroll = {
+          #   timing = timing 10; # Much faster timing
+          #   subscroll.__raw = ''
+          #     require('mini.animate').gen_subscroll.equal({
+          #       predicate = function(total_scroll)
+          #         return total_scroll > 1
+          #       end
+          #     })
+          #   '';
+          # };
           resize.timing = timing 50;
           open.enable = false;
           close.enable = false;
@@ -46,7 +88,7 @@ in {
             base0F = "#9CCFD8";
           };
           use_cterm = true;
-          plugs = {default = true;};
+          plugs = { default = true; };
         };
         basics = {
           autocommands = {
@@ -62,7 +104,7 @@ in {
             basic = true;
             windows = true;
             move_with_alt = true;
-            option_toggle_prefix = "<leader>xt";
+            option_toggle_prefix = "<leader>xmt";
           };
           silent = false;
         };
@@ -70,7 +112,7 @@ in {
           window = {
             delay = 500;
             config = {
-              border = "none";
+              # border = "none";
               width.__raw = ''
                 math.floor(0.318 * vim.o.columns)
               '';
@@ -154,24 +196,35 @@ in {
             }
           ];
           clues = [
-            {__raw = "require('mini.clue').gen_clues.builtin_completion()";}
-            {__raw = "require('mini.clue').gen_clues.g()";}
-            {__raw = "require('mini.clue').gen_clues.marks()";}
-            {__raw = "require('mini.clue').gen_clues.registers()";}
-            {__raw = "require('mini.clue').gen_clues.windows()";}
-            {__raw = "require('mini.clue').gen_clues.z()";}
+            { __raw = "require('mini.clue').gen_clues.builtin_completion()"; }
+            { __raw = "require('mini.clue').gen_clues.g()"; }
+            { __raw = "require('mini.clue').gen_clues.marks()"; }
+            { __raw = "require('mini.clue').gen_clues.registers()"; }
+            { __raw = "require('mini.clue').gen_clues.windows()"; }
+            { __raw = "require('mini.clue').gen_clues.z()"; }
           ];
         };
-        colors = {
+        colors = { };
+        comment = {
+          options = {
+            custom_commentstring = {
+              __raw = ''
+                function()
+                  if vim.bo.filetype == 'nix' then
+                    return '# %s'
+                  end
+                  return vim.bo.commentstring
+                end
+              '';
+            };
+          };
+          mappings = {
+            comment = "gc";
+            comment_line = "gcc";
+            comment_visual = "gc";
+            textobject = "gc";
+          };
         };
-        # comment = {
-
-        #     comment = "gc";
-        #     comment_line = "gcc";
-        #     comment_visual = "gc";
-        #     textobject = "gc";
-        #   };
-        # };
         hipatterns = {
           #highlights = {
           #    hex_color.__raw =
@@ -188,8 +241,7 @@ in {
         #        keymaps = {
         #  # j k
         #};
-        pairs = {
-        };
+        pairs = { };
         move = {
           # Move any selection in any direction
         };
@@ -218,8 +270,7 @@ in {
           # symbol = "";
           #   draw.delay = 0;
         };
-        sessions = {
-        };
+        sessions = { };
         surround = {
           mappings = {
             add = "gsa";

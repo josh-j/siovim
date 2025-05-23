@@ -1,18 +1,18 @@
 # lint.nix
-{pkgs, ...}: {
+{ pkgs, ... }: {
   plugins.lint = {
     enable = true;
     lintersByFt = {
-      nix = ["statix" "deadnix"];
-      python = ["pylint" "mypy"];
-      ruby = ["rubocop"];
-      markdown = ["markdownlint"];
-      dockerfile = ["hadolint"];
-      fish = ["fish"];
-      css = ["stylelint"];
-      sql = ["sqlfluff"];
+      nix = [ "statix" "deadnix" ];
+      python = [ "pylint" "mypy" ];
+      ruby = [ "rubocop" ];
+      markdown = [ "markdownlint" ];
+      dockerfile = [ "hadolint" ];
+      fish = [ "fish" ];
+      css = [ "stylelint" ];
+      sql = [ "sqlfluff" ];
     };
-    
+
     autoCmd = {
       callback = {
         __raw = ''
@@ -21,8 +21,8 @@
           end
         '';
       };
-      group = "lint";
-      event = ["BufEnter" "BufWritePost" "InsertLeave"];
+      # group = "lint";
+      event = [ "BufEnter" "BufWritePost" "InsertLeave" ];
     };
   };
 }

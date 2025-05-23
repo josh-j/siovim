@@ -1,3 +1,4 @@
+# lspsaga.nix
 {
   plugins = {
     lspsaga = {

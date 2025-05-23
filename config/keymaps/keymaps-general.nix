@@ -8,7 +8,7 @@
   config.keymaps = [
     # Make <space> do nothing in normal, visual, and operator-penidng
     {
-      mode = ["n" "v" "o"];
+      mode = [ "n" "v" "o" ];
       key = "<Space>";
       action = "<Nop>";
       options = {
@@ -395,7 +395,7 @@
       };
     }
 
-     # Select all lines in buffer (Helix: % s <ret> or % x)
+    # Select all lines in buffer (Helix: % s <ret> or % x)
     {
       mode = "i";
       key = "<C-a>"; # Standard Ctrl-A in insert mode for select all
@@ -418,15 +418,15 @@
         silent = true;
       };
     }
-  {
-    mode = "n";
-    key = "U";
-    action = "<C-r>";
-    options = {
-      noremap = true;
-      silent = true;
-      desc = "Redo";
-    };
-  }
+    {
+      mode = "n";
+      key = "U";
+      action = "<C-r>";
+      options = {
+        noremap = true;
+        silent = true;
+        desc = "Redo";
+      };
+    }
   ];
 }

@@ -34,11 +34,6 @@
               # Disable LSP formatting - conform will handle this
               command = null;
             };
-            options = {
-              nixos = {
-                expr = "(builtins.getFlake \"/etc/nixos\").nixosConfigurations.HOSTNAME.options";
-              };
-            };
           };
         };
         
@@ -68,7 +63,7 @@
         yamlls.enable = pkgs.lib.mkDefault true;
       };
       
-      # Add manual setup for PowerShell LSP with Linux paths
+      # Simplified postConfig without cmp_nvim_lsp dependency
       postConfig = ''
         local lspconfig = require('lspconfig')
         local tempDir = vim.fn.expand('~/.cache/nvim/powershell_es')
@@ -105,21 +100,9 @@
             }
           }
         })
-        
-        -- Global LSP settings to prefer external formatters
-        local capabilities = require('cmp_nvim_lsp').default_capabilities()
-        capabilities.textDocument.formatting = false
-        capabilities.textDocument.rangeFormatting = false
-        
-        -- Apply to all LSP servers
-        require('lspconfig').util.default_config = vim.tbl_extend(
-          'force',
-          require('lspconfig').util.default_config,
-          {
-            capabilities = capabilities,
-          }
-        )
       '';
     };
+    
+    lint.enable = pkgs.lib.mkDefault true;
   };
 }

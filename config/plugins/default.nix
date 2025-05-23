@@ -2,7 +2,7 @@
   imports = [
     ./better-escape.nix
     ./colorizer.nix
-    ./comment.nix
+    # ./comment.nix
     ./marks.nix
     ./project-nvim.nix
     ./todo-comments.nix
