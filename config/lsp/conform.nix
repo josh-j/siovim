@@ -11,8 +11,10 @@
         timeoutMs = 500;
       };
       formatters_by_ft = {
-        # Use the "_" filetype to run formatters on filetypes that don't have other formatters configured.
         nix = ["alejandra"];
+        nix = [ "nixpkgs_fmt" ];
+
+        # Use the "_" filetype to run formatters on filetypes that don't have other formatters configured.
         "_" = [
           "squeeze_blanks"
           "trim_whitespace"
@@ -28,6 +30,10 @@
         };
         alejandra = {
           command = lib.getExe pkgs.alejandra;
+        };
+
+        nixpkgs_fmt = {
+          command = lib.getExe pkgs.nixpkgs_fmt;
         };
       };
     };

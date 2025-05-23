@@ -3,9 +3,9 @@
 
   inputs = {
     # nixpkgs.url = "github:nixos/nixpkgs/nixos-24.11";
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-24.11";
-    nixvim.url = "github:nix-community/nixvim/main";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-25.05";
+    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-25.05";
+    nixvim.url = "github:nix-community/nixvim/nixos-25.05";
     flake-parts.url = "github:hercules-ci/flake-parts";
   };
 

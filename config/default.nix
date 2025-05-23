@@ -12,9 +12,9 @@
     ./plugins
     ./treesitter
     ./ui
-    #./autocmds.nix
+    ./autocmds.nix
     ./extra.nix
-    # ./options.nix
+    ./options.nix
 
     # Load last
     #./themes
