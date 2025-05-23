@@ -49,7 +49,7 @@ in
       local components = {}
       local function diff_source()
         local gitsigns = vim.b.gitsigns_status_dict
-        if vim.b.gitsigns_status_dict then
+        if gitsigns then
           return {
             added = gitsigns.added,
             modified = gitsigns.changed,
@@ -57,6 +57,8 @@ in
           }
         end
       end
+    
+      -- Remove the duplicate diff component definition
       components.diff = {
         "diff",
         source = diff_source,
@@ -66,20 +68,13 @@ in
           removed = "${icons.git.LineRemoved}" .. " ",
         },
       }
+    
       components.branch = {
         "b:gitsigns_head",
         icon = "${icons.git.Branch}",
         color = { gui = "bold" },
       }
-      components.diff = {
-        "diff",
-        source = diff_source,
-        symbols = {
-          added = "${icons.git.LineAdded}" .. " ",
-          modified = "${icons.git.LineModified}" .. " ",
-          removed = "${icons.git.LineRemoved}" .. " ",
-        },
-      }
+    
       components.diagnostics = {
         "diagnostics",
         sources = { "nvim_diagnostic" },
@@ -90,7 +85,7 @@ in
           hint = "${icons.diagnostics.BoldHint}" .. " ",
         },
       }
-      
+    
       -- Add navic breadcrumbs component
       components.navic = {
         function()
@@ -104,9 +99,9 @@ in
           local navic = require("nvim-navic")
           return navic.is_available()
         end,
-        color = { fg = "#8783A3" }, -- Use your base03 color or any color you prefer
+        color = { fg = "#8783A3" },
       }
-      
+    
       components.indicator = function()
         local noice = require("noice")
         return {
@@ -115,9 +110,10 @@ in
           color = { fg = "#ff9e64" },
         }
       end
-      -- components.location = { "location", color = { fg = "#000000" }, }
+    
       components.filetype = { "filetype", cond = nil, padding = { left = 1, right = 1 } }
       components.fileformat = { "fileformat", cond = nil, padding = { left = 1, right = 1 }, color = "SLGreen" }
+    
       components.lsp = {
         function()
           local clients = vim.lsp.get_clients()
@@ -127,7 +123,7 @@ in
           end
           for _, client in ipairs(clients) do
             if client.name ~= "copilot" and client.name ~= "null-ls" and client.name ~= "typos_lsp" then
-              local name = client.name:gsub("%[%d+%]", "") -- makes otter-ls[number] -> otter-ls
+              local name = client.name:gsub("%[%d+%]", "")
               table.insert(lsp_names, name)
             end
           end
@@ -145,6 +141,7 @@ in
           return "[" .. table.concat(vim.fn.uniq(names), ", ") .. "]"
         end
       };
+    
       local sections = {
         lualine_a = { components.mode },
         lualine_b = { components.fileformat, "encoding" },
@@ -152,7 +149,7 @@ in
           components.branch, 
           components.diff, 
           components.diagnostics,
-          components.navic  -- Add navic breadcrumbs here
+          components.navic
         },
         lualine_x = {
           components.indicator(),
@@ -161,6 +158,7 @@ in
         },
         lualine_y = { "progress" },
       }
+    
       local lualine = require("lualine")
       local config = lualine.get_config()
       config.sections = sections
