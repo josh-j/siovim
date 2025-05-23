@@ -307,7 +307,7 @@
     {
       mode = [ "n" ];
       key = "<leader>y";
-      action = "\"+yy\""; # Neovim: Yank current line to system clipboard
+      action = "\"+yy"; # Neovim: Yank current line to system clipboard
       options = {
         desc = "Helix: Yank line to system clipboard";
         remap = true;
@@ -317,7 +317,7 @@
     {
       mode = [ "v" ];
       key = "<leader>y";
-      action = "\"+y\""; # Neovim: Yank visual selection to system clipboard
+      action = "\"+y"; # Neovim: Yank visual selection to system clipboard
       options = {
         desc = "Helix: Yank selection to system clipboard";
         remap = true;
@@ -329,7 +329,7 @@
     {
       mode = [ "n" ];
       key = "<leader>Y";
-      action = "\"+y$\""; # Neovim: Yank from cursor to end of line to system clipboard
+      action = "\"+y$"; # Neovim: Yank from cursor to end of line to system clipboard
       options = {
         desc = "Helix: Yank to EOL to system clipboard";
         remap = true;
@@ -339,7 +339,7 @@
     {
       mode = [ "v" ];
       key = "<leader>Y";
-      action = "V\"+y\""; # Neovim: Ensure linewise visual selection, then yank to system clipboard
+      action = "V\"+y"; # Neovim: Ensure linewise visual selection, then yank to system clipboard
       options = {
         desc = "Helix: Yank whole selected lines to system clipboard";
         remap = true;
@@ -351,7 +351,7 @@
     {
       mode = [ "n" ];
       key = "<leader>p";
-      action = "\"+p\""; # Neovim: Paste from system clipboard after cursor/line
+      action = "\"+p"; # Neovim: Paste from system clipboard after cursor/line
       options = {
         desc = "Helix: Paste from system clipboard after";
         noremap = true;
@@ -363,7 +363,7 @@
     {
       mode = [ "n" ];
       key = "<leader>P";
-      action = "\"+P\""; # Neovim: Paste from system clipboard before cursor/line
+      action = "\"+P"; # Neovim: Paste from system clipboard before cursor/line
       options = {
         desc = "Helix: Paste from system clipboard before";
         noremap = true;
@@ -376,7 +376,7 @@
       mode = [ "n" ];
       key = "<leader>R";
       # To replace the current line: delete it without yanking, then paste from system clipboard.
-      action = "\"_dd\"+P\"";
+      action = "\"_dd\"+P";
       options = {
         desc = "Helix: Replace line with system clipboard";
         noremap = true;
@@ -387,7 +387,7 @@
       mode = [ "v" ];
       key = "<leader>R";
       # In visual mode, '"+P' (or '"+p') replaces the selection with the content of the '+' register.
-      action = "\"+P\"";
+      action = "\"+P";
       options = {
         desc = "Helix: Replace selection with system clipboard";
         noremap = true;
@@ -406,19 +406,6 @@
         silent = true;
       };
     }
-    {
-      # Normal mode select all (Helix: %)
-      mode = "n";
-      key = "%";
-      # This is Vim's default for go to percentage, not select all.
-      # Helix '%' is select_all. For Vim, `ggVG` is select all.
-      action = "ggVG";
-      options = {
-        desc = "Helix: Select all";
-        remap = true;
-        silent = true;
-      };
-    }
 
     # Join lines, keeping cursor position (Helix: J)
     {
@@ -431,5 +418,15 @@
         silent = true;
       };
     }
+  {
+    mode = "n";
+    key = "U";
+    action = "<C-r>";
+    options = {
+      noremap = true;
+      silent = true;
+      desc = "Redo";
+    };
+  }
   ];
 }
