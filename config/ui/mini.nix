@@ -72,7 +72,7 @@ in
           palette = {
             base00 = "#1a1f1a";
             base01 = "#2a2f2a";
-            base02 = "#2f2f2a";
+            base02 = "#22637d";
             base03 = "#8783A3";
             base04 = "#D3D1E6";
             base05 = "#FFF1E8";
