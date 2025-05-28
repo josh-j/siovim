@@ -71,7 +71,7 @@ in
         base16 = {
           palette = {
             base00 = "#1a1f1a";
-            base01 = "#2a2f2a";
+            base01 = "#12536d";
             base02 = "#22637d";
             base03 = "#8783A3";
             base04 = "#D3D1E6";
